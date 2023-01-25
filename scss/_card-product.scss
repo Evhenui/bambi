@@ -1170,6 +1170,11 @@ body.lock {
     stroke: $color-red;
     fill: $color-red;
   }
+
+  &__active-link.comparison.active &__comparison-svg {
+    stroke: $color-red;
+    fill: $color-red;
+  }
   //-------------svg effect like
   &__active-link.like:hover &__like-svg {
     fill: $color-red-40;

@@ -147,20 +147,20 @@ buttonCloseModal.forEach((item)=> {
     const sectionParam = comparison.querySelectorAll('[data-section-param]');
 
     const config = {
-        attributes: true,
-        childList: true,
-        subtree: true,
-        class: true
+      attributes: true,
     };
 
     const callback = function(mutationsList, observer) {
-        for (let mutation of mutationsList) {
-          if(mutation.target.classList.contains('active')) {
-            sectionParam.forEach(item => {
-              console.log(item)
-            })
+      characteristicItems.forEach((item, index) => {
+
+        sectionParam.forEach(item => {
+          if(item.children[index].offsetHeight < characteristicItems[index].offsetHeight) {
+            item.children[index].style.height = characteristicItems[index].offsetHeight + 'px'
+          } else {
+            characteristicItems[index].style.height = item.children[index].offsetHeight + 'px'
           }
-        }
+        })
+      })
     };
 
     const observer = new MutationObserver(callback);

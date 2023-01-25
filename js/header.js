@@ -11,7 +11,6 @@ export let header = function() {
     
     let widthScreen = window.innerWidth;
     let hidthSizePage = document.documentElement.clientHeight;
-    console.log(widthScreen);
     window['widthScreen'] = widthScreen
     
     
@@ -19,7 +18,6 @@ export let header = function() {
     //каталог в меню
     
     const btnCMenuCatalog = document.querySelectorAll('.js-menu-btn');
-    console.log(btnCMenuCatalog)
     btnCMenuCatalog.forEach((el) => {
         el.addEventListener('click', function () {
             el.closest('.js-menu-wrp').querySelector('.header__menu-item-link-wrp').classList.toggle('active');
@@ -147,7 +145,6 @@ export let header = function() {
     phoneHeader.addEventListener('click', function(event) {
         event.stopPropagation();
         phoneMenyHeader.classList.toggle('active');
-            console.log(blurMenu.classList.contains('active'));
             blurDel(phoneMenyHeader);
         closeActive([jsHeaderCatalog, menuHeader, menuBtn, menuBtnLine]);
         menuHeader.style.setProperty('height', 0 + 'px');
@@ -171,7 +168,6 @@ export let header = function() {
 
     function closeActive(params) {
         params.forEach((el) => {
-            console.log(el);
             el.classList.remove('active')
         })
     }

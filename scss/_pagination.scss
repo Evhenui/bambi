@@ -1,0 +1,72 @@
+.pagination {
+  @extend %size-page;
+  @extend %padding-country;
+  @extend %centre-flex;
+  flex-direction: column;
+
+  @include __860 {
+    @include padding-mob;
+  }
+
+  &__btn {
+    margin-bottom: 40px;
+  }
+
+  &__btn-numbers {
+    cursor: pointer;
+    &:hover > .pagination__btn-numbers-hover {
+      fill: $color-red;
+    }
+  }
+
+  &__btn-numbers-wrp {
+    @extend %centre-flex;
+    column-gap: 8px;
+  }
+
+  &__btn-numbers-item {
+    min-width: 40px;
+    height: 40px;
+    @extend %centre-flex;
+    flex-direction: column;
+
+    @include text(
+      $size: 16px,
+      $textAlign: center,
+      $fontWeight: 700,
+      $lineHeight: 20px
+    );
+
+    cursor: pointer;
+    transition: 0.3s ease-out;
+
+    &:hover {
+      color: $color-red;
+      transition: 0.3s ease-in;
+    }
+
+    &:hover > .pagination__btn-numbers-item-hov {
+      width: 60%;
+      transition: 0.3s ease-in;
+    }
+
+    &.active {
+      color: $color-red;
+      &:hover > .pagination__btn-numbers-item-hov {
+        width: 0;
+      }
+    }
+  }
+
+  &__btn-numbers-item-hov {
+    width: 0;
+    height: 1px;
+
+    background-color: $color-red;
+    transition: 0.3s ease-out;
+  }
+
+  &__btn-numbers-item-wrp {
+    @extend %centre-flex;
+  }
+}

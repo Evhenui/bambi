@@ -1,0 +1,413 @@
+html {
+  overflow-x: hidden;
+  &.notOverY {
+    overflow-y: hidden;
+  }
+  // margin-right: calc(-1 * (100vw - 100%));
+}
+:root {
+  --width-page: 1440px;
+  --height-monitor: 700px;
+  --height-page: 700px;
+  --position-wheel-bottom: 90px;
+  --position-wheel-right: 360px;
+  --counter-import-slider: 0;
+  --height-filter: 700px;
+  --gap: 16px;
+}
+
+.width {
+  width: var(--width-page) px;
+}
+
+#body-cont {
+  background-color: $color-background;
+  // overflow-x: hidden;
+  &.active {
+    overflow-y: hidden;
+    padding-right: 17px;
+    @include __860 {
+      padding-right: 0;
+    }
+  }
+}
+
+.main-wrp {
+  margin-top: 74px;
+}
+
+.btn-red {
+  max-width: 160px;
+  width: 100%;
+  height: 44px;
+  background-color: $color-red;
+  @include text($color: $color-white, $fontWeight: 700);
+  &:hover {
+    background-color: $color-red-60;
+    @include __860 {
+      background-color: $color-red-60;
+    }
+  }
+  &:active {
+    background-color: $color-red-80;
+    @include __860 {
+      // background-color: #991a1d00;
+    }
+  }
+}
+
+.btn-red-disabled {
+  max-width: 160px;
+  width: 100%;
+  height: 44px;
+  background-color: $color-gray-50;
+  @include text($color: $color-white, $fontWeight: 700);
+}
+
+.btn-red-white-background {
+  max-width: 160px;
+  width: 100%;
+  height: 44px;
+  background-color: $color-gray-50;
+  @include text($color: $color-white, $fontWeight: 700);
+}
+
+.btn-red-white-background-red-text {
+  height: 44px;
+  min-width: 160px;
+
+  @extend %centre-flex;
+  border: 1px solid $color-red;
+
+  @include text(
+    $size: 14px,
+    $textAlign: center,
+    $color: $color-red,
+    $fontWeight: 700,
+    $lineHeight: 20px
+  );
+
+  &:hover {
+    background-color: $color-red-20;
+  }
+
+  &:active {
+    background-color: $color-red-30;
+  }
+
+  &.desabled {
+    background-color: 1px solid $color-gray-50;
+    color: $color-gray-60;
+  }
+}
+
+.btn-gray {
+  max-width: 160px;
+  width: 100%;
+  height: 44px;
+
+  @include text($color: $color-red, $fontWeight: 700);
+  background-color: $color-gray-10;
+
+  &:hover {
+    background-color: $color-red-20;
+  }
+}
+
+.text-h1 {
+  @include text($size: 40px, $fontWeight: 900, $lineHeight: 60px);
+  text-transform: uppercase;
+  @include __860 {
+    @include text($size: 32px, $lineHeight: 32px);
+  }
+}
+
+.text-h2 {
+  @include text($size: 32px, $fontWeight: 800, $lineHeight: 60px);
+  text-transform: uppercase;
+}
+
+.text-h3 {
+  @include text($size: 20px, $fontWeight: 600, $lineHeight: 32px);
+  text-transform: uppercase;
+}
+
+.text-h4 {
+  @include text($size: 16px, $fontWeight: 700, $lineHeight: 24px);
+  text-transform: uppercase;
+}
+
+.text-main {
+  @include text($size: 14px, $fontWeight: 400, $lineHeight: 24px);
+}
+.link-text {
+  @include text($color: $color-red);
+  text-decoration: underline;
+}
+
+.red-diamonds {
+  width: 6px;
+  height: 6px;
+  display: flex;
+  background-color: $color-red;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: 0.3s ease-in;
+}
+
+.input-wrp {
+  max-width: 240px;
+  width: 100%;
+  padding: 10px 20px;
+  position: relative;
+  border: 1px solid $color-gray-60;
+  &__text {
+    padding: 0 4px;
+    position: absolute;
+    top: -16px;
+    left: 16px;
+    background-color: $color-gray-100;
+    @include text($size: 12px, $color: $color-gray-60, $lineHeight: 20px);
+  }
+
+  &:hover {
+    border: 1px solid $color-white;
+  }
+
+  // <div class="header__phone-menu-schedule-input input-wrp">
+  //   <span class="input-wrp__text">Введите номер телефона</span>
+  //   <input type="tel" name="" id="" placeholder="+38(0__)___-__-__">
+  // </div>
+}
+
+.input-style {
+  &__wrp {
+    max-width: 240px;
+    width: 100%;
+
+    padding: 9px 20px;
+
+    position: relative;
+    border: 1px solid $color-gray-60;
+    &:hover {
+      border: 1px solid $color-red-60;
+    }
+    &:hover .input-style__text {
+      color: $color-red-60;
+    }
+    &.active:hover .input-style__text {
+      color: $color-gray-60;
+    }
+    &.active:hover {
+      border: 1px solid $color-black;
+    }
+    // &.active {
+    //   border: 1px solid $color-black;
+    // }
+    & + & {
+      margin-top: 34px;
+    }
+  }
+  &__text {
+    padding: 0 4px;
+
+    position: absolute;
+    top: 9px;
+    left: 14px;
+
+    transition: 0.3s ease-out;
+    background-color: $color-background;
+    @include text($size: 14px, $color: $color-gray-60, $lineHeight: 24px);
+    z-index: -1;
+    &.active {
+      top: -16px;
+      left: 16px;
+
+      font-size: 12px;
+
+      transition: 0.3s ease-in;
+      z-index: 100;
+    }
+  }
+  &__text-input {
+    width: 100%;
+
+    @include text(
+      $size: 14px,
+      $color: $color-black,
+      $textAlign: left,
+      $lineHeight: 24px
+    );
+  }
+
+  // html структура для inputov
+  // <div data-input-wrp-item class="input-style__wrp">
+  //                     <!-- Не менять label и input не будет работать скрипт анимации -->
+  //                     <label class="input-style__text">Введите номер телефона</label>
+  //                     <input data-input class="input-style__text-input" type="text" name="" id="">
+  //                 </div>
+}
+
+.number-amount {
+  padding: 2px 4px;
+  background-color: $color-red;
+  @include text(
+    $size: 12px,
+    $color: $color-white,
+    $textAlign: left,
+    $lineHeight: 12px
+  );
+}
+
+.custom-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  top: 10px;
+  left: 8px;
+}
+
+.custom-checkbox + label {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  color: $color-gray-80;
+  font-size: 14px;
+}
+.custom-checkbox + label::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid $color-gray-80;
+  border-radius: 1px;
+  margin-right: 12px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.custom-checkbox:checked + label::before {
+  border-color: $color-red;
+  background-color: $color-red;
+  background-image: url("../icon/checkbox-icon.svg");
+}
+
+/* стили при наведении курсора на checkbox */
+// .custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
+//   border-color: #b3d7ff;
+// }
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.custom-checkbox:not(:disabled):active + label::before {
+  background-color: $color-red;
+  border-color: $color-red;
+}
+/* стили для чекбокса, находящегося в фокусе */
+// .custom-checkbox:focus + label::before {
+//   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+// }
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+// .custom-checkbox:focus:not(:checked) + label::before {
+//   border-color: #80bdff;
+// }
+/* стили для чекбокса, находящегося в состоянии disabled */
+.custom-checkbox:disabled + label::before {
+  background-color: $color-gray-50;
+}
+
+.lunge {
+  width: 100%;
+
+  position: absolute;
+  top: 56px;
+
+  row-gap: 4px;
+
+  background-color: $color-white;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in;
+  &__item {
+    height: 40px;
+
+    padding: 0 12px;
+
+    @extend %centre-space-between;
+
+    position: relative;
+    cursor: pointer;
+    z-index: 200;
+    &:hover .red-diamonds {
+      opacity: 1;
+
+      transition: 0.3s ease-in;
+    }
+
+    &:hover {
+      background-color: $color-red-10;
+    }
+
+    &:active {
+      background-color: $color-red-20;
+    }
+
+    &:active .red-diamonds {
+      opacity: 1;
+    }
+
+    &.active > .lunge__item-text {
+      @include text($color: $color-black);
+    }
+
+    &.active > .red-diamonds {
+      background-color: $color-red-40;
+      opacity: 1;
+    }
+
+    @include __860 {
+      padding: 0 20px;
+    }
+  }
+  &__item-text {
+    @include text(
+      $size: 14px,
+      $textAlign: left,
+      $color: $color-gray-80,
+      $fontWeight: 400,
+      $lineHeight: 22px
+    );
+  }
+  &__cube {
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    top: -6px;
+    right: 16px;
+
+    transform: rotate(-45deg);
+
+    background-color: $color-white;
+    z-index: 199;
+  }
+}
+
+.icon-freim {
+  width: 44px;
+  height: 44px;
+  @extend %centre-flex;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  &.active > .product-catalog-filters__container-icon {
+    transform: rotate(180deg);
+    transition: 0.3s ease-in;
+  }
+
+  &.active > .product-catalog-filters__container-icon-hover {
+    transform: rotate(180deg);
+    transition: 0.3s ease-in;
+  }
+}

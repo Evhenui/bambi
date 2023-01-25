@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="icon/favicon-black.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+    <!-- <script type="module" src="js/main.js"></script> -->
+    <title>Блог</title>
+</head>
+
+<body id="body-cont">
+    <header class="header">
+        <div class="header__wrp">
+            <div class="header__wrp-left-cont js-mob-item-active-left">
+                <a class="header__wrp-left-cont-link-logo" href="#">
+                    <img class="header__left-img-logo js-mob-item-active" src="img/heder-logo-img.svg"
+                        alt="Bambi Racer">
+                    <img class="header__left-img-logo-mob js-mob-item" src="img/heder-logo-mob-img.svg"
+                        alt="Bambi Racer">
+                </a>
+                <div class="header__btn-catalog-wrp js-mob-item">
+                    <button class="header__btn-catalog btn-red js-header-btn-catalog">
+                        <img src="icon/header-catalog-icon.svg" alt="catalog">
+                        <span class="header__btn-catalog-text">Каталог</span>
+                    </button>
+                    <div class="header__catalog-wrp js-header-catalog">
+                        <div class="header__catalog-item-wrp">
+                            <a href="#">Электромобили</a>
+                            <span class="red-diamonds"></span>
+                        </div>
+                        <div class="header__catalog-item-wrp">
+                            <a href="#">Металлические квадроциклы</a>
+                            <span class="red-diamonds"></span>
+                        </div>
+                        <div class="header__catalog-item-wrp">
+                            <a href="#">Велокарты</a>
+                            <span class="red-diamonds"></span>
+                        </div>
+                        <div class="header__catalog-item-wrp">
+                            <a href="#">Каталки-толокары</a>
+                            <span class="red-diamonds"></span>
+                        </div>
+                        <div class="header__catalog-item-wrp">
+                            <a href="#">Запчасти и Комплектующие</a>
+                            <span class="red-diamonds"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__languages-wrp js-mob-item-active">
+                    <button class="header__languages-btn active js-header-languages">ru</button>
+                    <span class="header__languages-btn-line"></span>
+                    <button class="header__languages-btn js-header-languages">ua</button>
+                </div>
+            </div>
+            <div class="header__wrp-right-cont js-mob-item-active-right">
+                <form class="header__search-form-wrp js-search js-mob-item">
+                    <input class="header__search-input js-search-input" type="text">
+                    <button class="header__btn-search js-btn-search">
+                        <img class="header__btn-search-img" src="icon/header-search-icon.svg" alt="">
+                        <img class="header__btn-search-img-hov" src="icon/header-search-icon-hov.svg" alt="">
+                    </button>
+                    <div class="header__btn-search-close js-btn-search-mob-close">
+                        <span class="header__btn-search-close-line header__btn-search-close-line-r"></span>
+                        <span class="header__btn-search-close-line header__btn-search-close-line-l"></span>
+                    </div>
+                </form>
+                <div class="header__right-item js-mob-item js-phone">
+                    <a class="header__right-item-phone" href="#">
+                        <img class="header__right-item-icon header__right-item-phone-img js-mob-item"
+                            src="icon/header-phone-icon.svg" alt="">
+                    </a>
+                    <div class="header__phone-menu js-phone-menu">
+                        <div class="header__phone-menu-schedule">
+                            <p>Звоните</p>
+                            <div class="header__phone-menu-schedule-time">
+                                <p>с 08:00 до 17:00 </p>
+                                <p>Сб, Вс - выходные</p>
+
+                            </div>
+                        </div>
+                        <div class="header__phone-menu-schedule-link-wrp">
+                            <a class="header__phone-menu-schedule-link" href="tel:+380931234577">
+                                <img src="icon/header-phone-call-icon.svg" alt="">
+                                <span>+38(093)123-45-77</span>
+                            </a>
+                        </div>
+                        <p class="header__phone-menu-schedule-or">Или</p>
+                        <p class="header__phone-menu-schedule-text">Оставьте номер телефона и мы перезвоним</p>
+                        <form>
+                            <div class="header__phone-menu-schedule-input input-wrp">
+                                <span class="input-wrp__text">Введите номер телефона</span>
+                                <input type="tel" name="" id="" placeholder="+38(0__)___-__-__">
+                            </div>
+
+                            <button class="btn-red header__phone-menu-schedule-btn">Перезвоните мне</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- <a class="header__right-item" href="tel:+">
+                    <img class="header__right-item-icon js-mob-item" src="icon/header-phone-icon.svg" alt="">
+                </a> -->
+                <a class="header__right-item" href="#">
+                    <img class="header__right-item-icon header__right-item-icon-size js-mob-item"
+                        src="icon/header-comparison-icon.svg" alt="">
+                    <span class="header__right-item-amount number-amount">5</span>
+                </a>
+                <button class="header__right-item js-mob-item">
+                    <img class="header__right-item-icon header__right-item-icon-size" src="icon/header-basket-icon.svg"
+                        alt="">
+                    <span class="header__right-item-amount number-amount">5</span>
+                </button>
+                <button class="header__right-item">
+                    <img class="header__right-item-icon header__right-item-icon-size"
+                        src="icon/header-personal-area-icon.svg" alt="">
+                </button>
+                <div class="header__right-wrp-menu">
+                    <button class="header__menu-btn-wrp js-btn-menu">
+                        <span class="header__menu-btn-line"></span>
+                    </button>
+                    <div class="header__menu-wrp js-menu">
+                        <div class="header__menu-section-wrp">
+                            <div class="header__menu-personal-wrp">
+                                <img src="icon/header-personal-area-icon.svg" alt="personal">
+                                <div class="header__menu-personal-login">
+                                    <a href="#">Вход</a>
+                                    <span class="header__menu-personal-line-vertical"></span>
+                                    <a href="#">Регистрация</a>
+                                </div>
+
+                            </div>
+                            <span class="header__menu-personal-line"></span>
+                            <div class="header__menu-personal-basket-comparison">
+                                <a class="header__menu-personal-basket">
+                                    <img src="icon/header-basket-icon.svg" alt="basket">
+                                    <span>Корзина</span>
+                                    <span class="number-amount">500</span>
+                                </a>
+                                <a class="header__menu-personal-comparison">
+                                    <img src="icon/header-comparison-icon.svg" alt="basket">
+                                    <span>Сравнение</span>
+                                    <span class="number-amount">500</span>
+                                </a>
+                            </div>
+                            <span class="header__menu-personal-line"></span>
+                            <div class="header__menu-section-item">
+                                <div class="js-menu-wrp header__menu-section">
+                                    <div class="header__menu-name-categoty-wrp js-menu-btn">
+                                        <h2 class="header__menu-name-categoty">Каталог</h2>
+                                        <img class="header__menu-name-categoty-icon active"
+                                            src="icon/arrow-white-icon.svg" alt="">
+                                    </div>
+                                    <div class="header__menu-item-link-wrp active">
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Весь каталог</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Электромобили</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Металлические квадроциклы</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Велокарты</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Каталки-толокары</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="js-menu-wrp header__menu-section">
+                                    <div class="header__menu-name-categoty-wrp js-menu-btn">
+                                        <h2 class="header__menu-name-categoty">О компании</h2>
+                                        <img class="header__menu-name-categoty-icon" src="icon/arrow-white-icon.svg"
+                                            alt="">
+                                    </div>
+                                    <div class="header__menu-item-link-wrp">
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">О компании</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Оплата и доставка</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Гарантия и сервис</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Стать партнером</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Контакты</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Text</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="js-menu-wrp header__menu-section">
+                                    <div class="header__menu-name-categoty-wrp js-menu-btn">
+                                        <h2 class="header__menu-name-categoty">Сервис и поддержка</h2>
+                                        <img class="header__menu-name-categoty-icon" src="icon/arrow-white-icon.svg"
+                                            alt="">
+                                    </div>
+                                    <div class="header__menu-item-link-wrp">
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">FAQ</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Возврат и обмен</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Инструкции</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                        <a class="header__menu-item-link" href="#">
+                                            <p class="header__menu-item-text">Text</p>
+                                            <span class="header__menu-item-text-diamond red-diamonds"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="header__menu-section">
+                                    <div class="header__menu-name-categoty-wrp js-menu-btn">
+                                        <a href="#">
+                                            <h2 class="header__menu-name-categoty">Блог</h2>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="header__menu-work-time">
+                            <p class="header__menu-work-time-title-text">График работы</p>
+                            <div class="header__menu-work-time-timeline-wrp">
+                                <div class="header__menu-work-time-timeline">
+                                    <p>
+                                        с 08:00 до 17:00
+                                    </p>
+                                    <p>
+                                        Сб, Вс - выходные
+                                    </p>
+                                </div>
+                                <div class="header__menu-work-time-timeline">
+                                    <a href="tel:+380931234577">+38(093)123-45-77</a>
+                                    <a href="tel:+380931234577">+38(093)123-45-77</a>
+                                </div>
+                            </div>
+                            <div class="header__menu-social">
+                                <a href="#">
+                                    <img src="icon/header-faceboock-icon.svg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="icon/header-telegram-icon.svg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="icon/header-instogram-icon.svg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="icon/header-youtube-icon.svg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="icon/header-viber-icon.svg" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <main class="js-main">
+        <!-- вставляется в main -->
+        <section class="bread-crumbs">
+            <ul class="bread-crumbs__wrp">
+                <li class="bread-crumbs__item-wrp"><a href="#">Главная</a></li>
+                <li class="bread-crumbs__item-wrp"><span class="">/</span> <a href="#">каталог</a></li>
+            </ul>
+        </section>
+        <div class="blog-main-title">
+            <h1 class="blog-main-title__text">новости</h1>
+        </div>
+        <div class="blog-main-news-main">
+            <div class="blog-main-news-main__main-bun-wrp">
+                <img src="./img/blog-img-electro-car.png" alt="Электронный каталог «Bambi Racer и не только»">
+                <div class="blog-main-news-main__text-wrp">
+                    <h2 class="blog-main-news-main__text blog-main-news-main__text-dest">Электронный каталог «Bambi
+                        Racer и не только»</h2>
+                </div>
+                <div class="blog-main-news-main__text-wrp-hov">
+                    <p class="blog-main-news-main__text-date-hov">04 апреля 2022</p>
+                    <h2 class="blog-main-news-main__text blog-main-news-main__text-mob">Электронный каталог «Bambi Racer
+                        и не только»</h2>
+                    <div class="blog-main-news-main__text-btn-wrp">
+                        <h3 class="blog-main-news-main__text-hov">Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit,
+                            sed do eiusmod tempor
+
+                        </h3>
+                        <button>
+                            <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="blog-main-news-main__article-list-wrp">
+                <div class="blog-main-news-main__article-wrp">
+                    <img class="blog-main-news-main__article-img" src="/img/blog-15.png" alt="название статьи">
+                    <div class="blog-main-news-main__text-wrp">
+                        <h2 class="blog-main-news-main__text blog-main-news-main__text-dest">Электронный каталог «Bambi
+                            Racer и не только»</h2>
+                    </div>
+                    <div class="blog-main-news-main__text-wrp-hov">
+                        <p class="blog-main-news-main__text-date-hov">04 апреля 2022</p>
+                        <h2 class="blog-main-news-main__text blog-main-news-main__text-mob">Электронный каталог «Bambi
+                            Racer и не только»</h2>
+                        <div class="blog-main-news-main__text-btn-wrp">
+                            <h3 class="blog-main-news-main__text-hov">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit,
+                                sed do eiusmod tempor </h3>
+                            <button>
+                                <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-main-news-main__article-wrp">
+                    <img class="blog-main-news-main__article-img" src="/img/blog-15.png" alt="название статьи">
+                    <div class="blog-main-news-main__text-wrp">
+                        <h2 class="blog-main-news-main__text blog-main-news-main__text-dest">Электронный каталог «Bambi
+                            Racer и не только»</h2>
+                    </div>
+                    <div class="blog-main-news-main__text-wrp-hov">
+                        <p class="blog-main-news-main__text-date-hov">04 апреля 2022</p>
+                        <h2 class="blog-main-news-main__text blog-main-news-main__text-mob">Электронный каталог «Bambi
+                            Racer и не только»</h2>
+                        <div class="blog-main-news-main__text-btn-wrp">
+                            <h3 class="blog-main-news-main__text-hov">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit,
+                                sed do eiusmod tempor </h3>
+                            <button>
+                                <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-nav__wrp" data-blog-wrp>
+            <section data-nav class="blog-nav">
+                <section class="blog-nav__nav">
+                    <div data-blog-item class="blog-nav__nav-item-wrp active">
+                        <p class="blog-nav__nav-item">Всё</p>
+                        <span class="blog-nav__nav-line "></span>
+                    </div>
+                    <div data-blog-item class="blog-nav__nav-item-wrp">
+                        <p class="blog-nav__nav-item">Новости</p>
+                        <span class="blog-nav__nav-line"></span>
+                    </div>
+                    <div data-blog-item class="blog-nav__nav-item-wrp">
+                        <p class="blog-nav__nav-item">Статьи</p>
+                        <span class="blog-nav__nav-line"></span>
+                    </div>
+                    <div data-blog-item class="blog-nav__nav-item-wrp">
+                        <p class="blog-nav__nav-item">Видео</p>
+                        <span class="blog-nav__nav-line"></span>
+                    </div>
+                </section>
+            </section>
+            <section class="blog-nav-article">
+                <div data-wrp-item-news class="blog-nav-article__news-wrp active">
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-wrp-item-news class="blog-nav-article__news-wrp">
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">123Lorem ipsum dolor sit amet, consectetur
+                                adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-wrp-item-news class="blog-nav-article__news-wrp">
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-wrp-item-news class="blog-nav-article__news-wrp">
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-nav-article__news-wrp-item">
+                        <img class="blog-nav-article__news-img" src="./img/blog-15.png" alt="название сьтатьи">
+                        <div class="blog-nav-article__news-text-wrp">
+                            <p class="blog-nav-article__news-date">04 апреля 2022</p>
+                            <h2 class="blog-nav-article__news-title">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed do eiusmod tempor </h2>
+                            <div class="blog-nav-article__news-text-link-wrp">
+                                <h3 class="blog-nav-article__news-text">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit, sed do eiusmod tempor </h3>
+                                <button>
+                                    <a class="blog-nav-article__news-link" href="#">Подробнее</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="blog-nav__pagination pagination">
+            <button class="pagination__btn btn-red-white-background-red-text">Показать еще</button>
+            <div class="pagination__btn-numbers-wrp">
+                <svg class="pagination__btn-numbers" width="40" height="40" viewBox="0 0 40 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M25.7071 9.70711C26.0976 9.31658 26.0976 8.68342 25.7071 8.29289C25.3166 7.90237 24.6834 7.90237 24.2929 8.29289L25.7071 9.70711ZM14 20L13.2929 19.2929C12.9024 19.6834 12.9024 20.3166 13.2929 20.7071L14 20ZM24.2929 31.7071C24.6834 32.0976 25.3166 32.0976 25.7071 31.7071C26.0976 31.3166 26.0976 30.6834 25.7071 30.2929L24.2929 31.7071ZM24.2929 8.29289L13.2929 19.2929L14.7071 20.7071L25.7071 9.70711L24.2929 8.29289ZM13.2929 20.7071L24.2929 31.7071L25.7071 30.2929L14.7071 19.2929L13.2929 20.7071Z"
+                        fill="#090102" />
+                    <path class="pagination__btn-numbers-hover"
+                        d="M24.2929 26.2929L18.7071 20.7071C18.3166 20.3166 18.3166 19.6834 18.7071 19.2929L24.2929 13.7071C24.9229 13.0771 26 13.5233 26 14.4142V25.5858C26 26.4767 24.9229 26.9229 24.2929 26.2929Z"
+                        fill="#090102" />
+                </svg>
+                <div class="pagination__btn-numbers-item-wrp">
+                    <span class="pagination__btn-numbers-item">1 <span
+                            class="pagination__btn-numbers-item-hov"></span></span>
+                    <span class="pagination__btn-numbers-item">2 <span
+                            class="pagination__btn-numbers-item-hov"></span></span>
+                    <span class="pagination__btn-numbers-item">3 <span
+                            class="pagination__btn-numbers-item-hov"></span></span>
+                    <span class="pagination__btn-numbers-item">... <span
+                            class="pagination__btn-numbers-item-hov"></span></span>
+                    <span class="pagination__btn-numbers-item">12 <span
+                            class="pagination__btn-numbers-item-hov"></span></span>
+                </div>
+                <svg class="pagination__btn-numbers" width="40" height="40" viewBox="0 0 40 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M14.2929 30.2929C13.9024 30.6834 13.9024 31.3166 14.2929 31.7071C14.6834 32.0976 15.3166 32.0976 15.7071 31.7071L14.2929 30.2929ZM26 20L26.7071 20.7071C27.0976 20.3166 27.0976 19.6834 26.7071 19.2929L26 20ZM15.7071 8.29289C15.3166 7.90237 14.6834 7.90237 14.2929 8.29289C13.9024 8.68342 13.9024 9.31658 14.2929 9.70711L15.7071 8.29289ZM15.7071 31.7071L26.7071 20.7071L25.2929 19.2929L14.2929 30.2929L15.7071 31.7071ZM26.7071 19.2929L15.7071 8.29289L14.2929 9.70711L25.2929 20.7071L26.7071 19.2929Z"
+                        fill="#090102" />
+                    <path class="pagination__btn-numbers-hover"
+                        d="M15.7071 13.7071L21.2929 19.2929C21.6834 19.6834 21.6834 20.3166 21.2929 20.7071L15.7071 26.2929C15.0771 26.9229 14 26.4767 14 25.5858V14.4142C14 13.5233 15.0771 13.0771 15.7071 13.7071Z"
+                        fill="#090102" />
+                </svg>
+            </div>
+        </div>
+        <!-- do not delete, this is a blur !!!!!!!!!!!!!!! Should be on every page-->
+        <div class="js-clacc-blur">
+        </div>
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    </main>
+
+    <script src="dist/bundle.js"></script>
+</body>

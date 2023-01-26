@@ -200,6 +200,7 @@
   height: 800px;
   position: relative;
   background-color: $color-gray-100;
+  overflow: hidden;
   &__text-wrp {
     @extend %centre-flex-columb;
     align-items: flex-start;
@@ -488,6 +489,7 @@
     position: relative;
     @include __1090 {
       transition: 0.3s ease-out;
+      justify-content: flex-start;
     }
   }
   &__circle {
@@ -596,6 +598,9 @@
   }
   &__text-wrp {
     max-width: 540px;
+
+    position: relative;
+    z-index: 2;
     @include __860 {
       max-width: 100%;
       margin-bottom: 60px;

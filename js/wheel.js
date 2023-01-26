@@ -8,9 +8,9 @@ export let wheel = function() {
         let widthScreen = window.innerWidth;
         window.getComputedStyle(wheelBack).getPropertyValue('--width-page');
         wheelBack.style.setProperty('--width-page', widthScreen + 'px');
-        console.log(widthScreen);
+
         if(widthScreen < 1440) {
-            console.log(widthScreen);
+
             window.getComputedStyle(wheelImg).getPropertyValue('--position-wheel-bottom');
             wheelImg.style.setProperty('--position-wheel-bottom', (window.innerWidth / 20) + 'px');
         }

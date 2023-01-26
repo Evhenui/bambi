@@ -1,5 +1,12 @@
 export let mainPageRangeFun = function() {
     const mainPageRange = document.querySelector('.js-main-page-range-wrp');
+
+    const test = document.querySelector()
+    console.log(mainPageRange.scrollTop, 'scrolltio')
+
+    window.addEventListener('scroll', ()=> {
+        console.log(window.scrollY)
+    })
     if(mainPageRange != null) {
 
         const mainPageRangeArr = mainPageRange.querySelectorAll('.js-main-page-range');
@@ -15,10 +22,16 @@ export let mainPageRangeFun = function() {
         let intervalCount = 0;
 
         function test() {
+            width = mainPageRange.querySelector('.js-width-slid-wrp').offsetWidth;
             delActivRange(mainPageRangeCircle);
             delActivRange(mainPageRangeCircleRed);
             delActivRange(mainPageRangeImgArr);
-            count++;
+
+            if(count < mainPageRangeImgArr.length - 1) {
+                count++;
+            } else {
+                count = 0
+            }
 
             mainPageRangeCircle[count].classList.add('active');
             mainPageRangeCircleRed[count].classList.add('active');
@@ -26,14 +39,13 @@ export let mainPageRangeFun = function() {
 
             if(window.innerWidth < 1090) {
                 widthSliderTotal.style.transform = 'translate(-'+ count * width + 'px)';
-            }
-
-          
+            }  
         }
         clearInterval(interval)
         interval = setInterval(test, 5000);
         
         mainPageRangeArr.forEach((el, index) => {
+            width = mainPageRange.querySelector('.js-width-slid-wrp').offsetWidth;
             el.addEventListener('click', function() {
                 delActivRange(mainPageRangeCircle);
                 delActivRange(mainPageRangeCircleRed);
@@ -43,9 +55,8 @@ export let mainPageRangeFun = function() {
                 mainPageRangeCircleRed[index].classList.add('active');
                 mainPageRangeImgArr[index].classList.add('active');
                 count = index;
-                console.log(index)
+
                 if(window.innerWidth < 1090) {
-                    
                     widthSliderTotal.style.transform = 'translate(-'+count*width+'px)';
                 }
 
@@ -55,11 +66,11 @@ export let mainPageRangeFun = function() {
             param.forEach((el) => {
                 el.classList.remove('active')
             })
-        }
+        } 
 
-        // моб логика
-        if(window.innerWidth <= 1090) {
-            function init() {
+        function init() {       
+            if(window.innerWidth <= 1090) {
+                console.log('hello')
                 width = mainPageRange.querySelector('.js-width-slid-wrp').offsetWidth;
                 widthSliderTotal.style.transform = 'translate(-'+count*width+'px)';
                 if(window.innerWidth < 1090) {
@@ -67,11 +78,23 @@ export let mainPageRangeFun = function() {
                     widthSliderTotal.style.width = width * mainPageRangeImgArr.length + 'px'; 
                 }
                 mainPageRangeImgArr.forEach(item => {
-                    item.style.width = width + 'px';
+                    item.style.maxWidth = width + 'px';
+                })
+            } else {
+                widthSliderTotal.style.transform = 'translate(-'+ 0 +'px)';
+                widthSliderTotal.style.width = 100 + '%'; 
+
+                mainPageRangeImgArr.forEach(item => {
+                    item.style.maxWidth = 544 + 'px';
                 })
             }
-            window.addEventListener('resize', init);
-            init();
+        }
+        window.addEventListener('resize', init);
+        init();
+
+        // моб логика
+        if(window.innerWidth <= 1090) {
+
             if(window.innerWidth <= 1090) {}
             function roolSlider() {
                 widthSliderTotal.style.transform = 'translate(-'+count*width+'px)';
@@ -105,7 +128,6 @@ export let mainPageRangeFun = function() {
                         delActivRange(mainPageRangeCircle);
                         // delActivRange(mainPageRangeArr)
                         count--;
-                        console.log(count);
                         if(count != undefined) {
                             mainPageRangeCircle[count].classList.add('active')
                             roolSlider()

@@ -1,0 +1,37 @@
+.error-page {
+  
+
+  &__wrapper {
+    @extend %size-page;
+    @extend %centre-flex-columb;
+
+    padding: 164px 48px 50px 48px;
+    gap: 48px;
+
+    @media (max-width: 860px) {
+      @include padding-mob;
+      padding-bottom: 198px;
+      gap: 100px;
+    }
+  }
+
+  &__title {
+    @include text(18px, center, $color-black, 700, 28px);
+
+    margin-bottom: 12px;
+  }
+
+  &__subtitle {
+    @include text(14px, center, $color-black, 400, 24px);
+    
+    margin-bottom: 58px;
+  }
+
+  &__footer-title {
+    @include text(14px, center, $color-black, 700, 24px);
+  }
+
+  &__link {
+    color: $color-red;
+  }
+}

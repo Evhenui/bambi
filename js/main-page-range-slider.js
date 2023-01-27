@@ -1,11 +1,11 @@
 export let mainPageRangeFun = function() {
     const mainPageRange = document.querySelector('.js-main-page-range-wrp');
 
-    const test = document.querySelector()
-    console.log(mainPageRange.scrollTop, 'scrolltio')
+   /*  const test = document.querySelector()
+    console.log(mainPageRange.scrollTop, 'scrolltio') */
 
     window.addEventListener('scroll', ()=> {
-        console.log(window.scrollY)
+        /* console.log(window.scrollY) */
     })
     if(mainPageRange != null) {
 

@@ -1,0 +1,274 @@
+
+.name-page {
+  @extend %size-page;
+
+  margin-bottom: 28px;
+
+  &__wrapper {
+    width: max-content;
+
+    background-color: $color-red;
+
+    padding: 4px 48px;
+
+    @include __860 {
+      padding: 4px 16px;
+    }
+  }
+
+  &__title {
+    @include text(40px, left, $color-white, 900, 60px);
+    text-transform: uppercase;
+
+    @include __860 {
+      @include text(32px, left, $color-white, 900, 44px);
+    }
+  }
+}
+.instructions {
+  @extend %centre-space-between;
+  @extend %size-page;
+  @extend %padding-country;
+
+  @include __860 {
+    @include padding-mob;
+
+    flex-direction: column-reverse;
+
+    gap: 10px;
+    padding-bottom: 100px;
+  }
+
+  &__content {
+    max-width: 680px;
+    width: 100%;
+
+    align-self: flex-start;
+
+    @include __1280 {
+      max-width: 500px;
+    }
+  }
+
+  &__decription {
+    @include text(14px, left, $color-gray-80, 400, 20px);
+
+    margin-bottom: 24px;
+  }
+
+  &__serach-place {
+    @extend %left-flex;
+    align-items: end;
+
+    margin-bottom: 36px;
+
+    @include __860 {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__input {
+    width: 100%;
+
+    border-bottom: 1px solid $color-black;
+  }
+
+  &__input-img {
+    font-size: 0;
+  }
+
+  &__category {
+    @extend %flex-columb;
+
+    gap: 16px;
+  }
+
+  &__category-list {
+    height: 410px;
+
+    @extend %flex-columb;
+
+    gap: 44px;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    @include __860 {
+      height: auto;
+    }
+  }
+
+  &__category-title {
+    @include text(16px, left, $color-red, 700, 20px);
+    text-transform: uppercase;
+
+    @include __860 {
+      line-height: 24px;
+    }
+  }
+
+  &__list {
+    @extend %flex-columb;
+
+    gap: 4px;
+  }
+
+  &__list-item {
+    min-height: 40px;
+
+    @extend %left-flex;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    @include __860 {
+      min-height: 56px;
+    }
+
+    &:hover {
+      .instructions__link {
+        color: $color-red;
+      }
+
+      .instructions__download-img {
+        display: none;
+      }
+
+      .instructions__download-img-active {
+        display: block;
+      }
+
+      .instructions__tip {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__link {
+    @include text(16px, left, $color-black, 700, 24px);
+
+    @include __1280 {
+      max-width: 250px;
+    }
+
+    @include __860 {
+      max-width: 100%;
+    }
+  }
+
+  &__link-img {
+    flex: 0 0 auto;
+  }
+
+  &__tip {
+    @extend %left-flex;
+
+    transition: opacity .2s ease-in-out;
+
+    opacity: 0;
+    visibility: hidden;
+
+    @include __860 {
+      display: none;
+    }
+  }
+
+  &__title-wrp {
+    background-color: rgba(9, 1, 2, 0.9);
+    border-radius: 1px;
+
+    padding: 8px 12px;
+  }
+
+  &__tip-title {
+    @include text(16px, left, $color-white, 400, 24px);
+  }
+
+  &__download-img-active {
+    display: none;
+  }
+}
+
+
+.modal {
+  display: none;
+
+  @include __860 {
+    &.active {
+      display: flex;
+    }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(217, 217, 217, 0.4);
+    backdrop-filter: blur(3px);
+  } 
+
+  &__content {
+    max-width: 343px;
+    width: 100%;
+
+    @extend %centre-flex-columb;
+
+    background-color: $color-white;
+
+    padding: 20px;
+    gap: 40px;
+  }
+
+  &__title {
+    @include text(18px, center, $color-black, 700, 28px);
+  }
+
+  &__img {
+    font-size: 0;
+
+    &.active {
+      border: 1px solid #51B900;
+      border-radius: 50%;
+
+      .modal__img-state {
+        fill: #51B900;
+      }
+    }
+  }
+
+  &__buttons {
+    @extend %centre-space-between;
+
+    gap: 12px;
+  }
+
+  &__btn-cancel {
+    max-width: 145px;
+    width: 100%;
+
+    @include text(14px, center, $color-red, 700, 20px);
+
+    border: 1px solid $color-red;
+    background-color: $color-white;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    padding: 12px 43px;
+  }
+
+  &__btn-download {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    padding: 12px 43px;
+  }
+}

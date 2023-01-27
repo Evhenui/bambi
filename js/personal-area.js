@@ -8,20 +8,24 @@ export let personalArea = function () {
         sortingList = document.querySelector('.personal-area-favorites__sorting-wrp'),
         comparison = document.querySelector('[data-personal-comparison-wrp]');
 
-        sortingFavourite.addEventListener('click', () => {
-          if(sortingList.classList.contains('active')) {
-            sortingList.classList.remove('active');
-          } else {
-            sortingList.classList.add('active');
-          }
-        })
+        if(sortingFavourite !== null) {
 
-        document.addEventListener('click',(e)=>{
-          const click = e.composedPath().includes(sortingList);
-          if(!click) {
-            sortingList.classList.remove('active');
-          }
-        })
+          sortingFavourite.addEventListener('click', () => {
+            if(sortingList.classList.contains('active')) {
+              sortingList.classList.remove('active');
+            } else {
+              sortingList.classList.add('active');
+            }
+          })
+
+          document.addEventListener('click',(e)=>{
+            const click = e.composedPath().includes(sortingList);
+            if(!click) {
+              sortingList.classList.remove('active');
+            }
+          })
+        }
+
 
 //----------------------tab menu-----------------
   if (itemTabMenu != null && tabsItems != null) {

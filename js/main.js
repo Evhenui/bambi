@@ -46,3 +46,6 @@ import {mainPageMainSlider} from './main-page-main-slider.js'
 
 import {basket}  from './basket.js';
         basket(); 
+
+import {instructions}  from './instructions.js';
+instructions(); 

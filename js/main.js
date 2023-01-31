@@ -48,4 +48,7 @@ import {basket}  from './basket.js';
         basket(); 
 
 import {instructions}  from './instructions.js';
-instructions(); 
+        instructions(); 
+
+import {faq}  from './faq.js';
+        faq(); 

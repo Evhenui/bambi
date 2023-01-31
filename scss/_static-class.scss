@@ -411,3 +411,64 @@ html {
     transition: 0.3s ease-in;
   }
 }
+
+
+.wrp-title-text {
+  margin-bottom: 24px;
+
+  @extend %size-page;
+  @extend %padding-country;
+
+  @include __860 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &__des {
+    @include __860 {
+      display: none;
+    }
+  }
+
+  &__mob {
+    display: none;
+
+    @include __860 {
+      display: flex;
+    }
+  }
+}
+
+.title-text-h1 {
+  min-height: 68px;
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+
+  margin-left: -48px;
+  padding-right: 48px;
+  padding-left: 48px;
+
+  background-color: $color-red;
+  @include text(
+    $size: 40px,
+    $color: $color-white,
+    $fontWeight: 900,
+    $lineHeight: 60px
+  );
+
+  @include __860 {
+    width: 100%;
+
+    margin-left: -16px;
+    padding-right: 16px;
+    padding-left: 16px;
+    @include text(
+      $size: 32px,
+      $color: $color-white,
+      $fontWeight: 800,
+      $lineHeight: 44px
+    );
+  }
+}

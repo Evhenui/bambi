@@ -128,7 +128,7 @@ label {
   --height-nav: 0;
 }
 
-.pagination__btn-numbers-item-wrp, .pagination__btn-numbers-item, .pagination__btn-numbers-wrp, .pagination, .card-product-spare-parts__slider-navigation, .main-slider-card-prod__button-prev, .main-slider-card-prod__button-next, .card-product-gallery__slider-pagination, .card-product-reviews__title-wrapper, .card-product-all-info__button-buy, .modal-zoom__button-buy, .card-product-header-info .card-product-all-info__active-link.mobile-footer, .blog-main-news-main__text-wrp, .order-in-the-process__image-wrapper.number, .product-catalog-nav__list, .product-catalog-nav, .product-catalog-filters__filters-text-icon, .product-catalog-filters__container, .product-catalog-filters__selected, .product-catalog-filters__title-text-icon-wrp, .main-page-important-slider__btn-down, .main-page-important-slider__pagination-btn-wrp-item, .main-page-important-slider__pagination-btn-wrp, .main-page-range__circle-item-list, .main-page-range__circle-smoll-wrp, .main-page-product__carousel-top-nav-wrp, .main-page-product__title-text-wrp, .js-card-catalog-color.active > .card-prod-catalog__colors-item, .card-prod-catalog__colors-item-wrp, .card-prod-catalog__colors-wrp, .card-prod-catalog__rating-reviews-wrp, .card-prod-catalog__reviews-wrp, .card-prod-catalog__img, .main-slider .wrp-cont, .search-modal__total-text, .search-modal__text-wrp, .header__menu-work-time-timeline-mob, .header__right-item-phone, .header__right-item, .header__search-form-wrp, .header__btn-catalog, .header__btn-catalog-wrp, .icon-freim, .btn-red-white-background-red-text {
+.warranty-servise__img-wrp, .pagination__btn-numbers-item-wrp, .pagination__btn-numbers-item, .pagination__btn-numbers-wrp, .pagination, .card-product-spare-parts__slider-navigation, .main-slider-card-prod__button-prev, .main-slider-card-prod__button-next, .card-product-gallery__slider-pagination, .card-product-reviews__title-wrapper, .card-product-all-info__button-buy, .modal-zoom__button-buy, .card-product-header-info .card-product-all-info__active-link.mobile-footer, .blog-main-news-main__text-wrp, .order-in-the-process__image-wrapper.number, .product-catalog-nav__list, .product-catalog-nav, .product-catalog-filters__filters-text-icon, .product-catalog-filters__container, .product-catalog-filters__selected, .product-catalog-filters__title-text-icon-wrp, .main-page-important-slider__btn-down, .main-page-important-slider__pagination-btn-wrp-item, .main-page-important-slider__pagination-btn-wrp, .main-page-range__circle-item-list, .main-page-range__circle-smoll-wrp, .main-page-product__carousel-top-nav-wrp, .main-page-product__title-text-wrp, .js-card-catalog-color.active > .card-prod-catalog__colors-item, .card-prod-catalog__colors-item-wrp, .card-prod-catalog__colors-wrp, .card-prod-catalog__rating-reviews-wrp, .card-prod-catalog__reviews-wrp, .card-prod-catalog__img, .main-slider .wrp-cont, .search-modal__total-text, .search-modal__text-wrp, .header__menu-work-time-timeline-mob, .header__right-item-phone, .header__right-item, .header__search-form-wrp, .header__btn-catalog, .header__btn-catalog-wrp, .icon-freim, .btn-red-white-background-red-text {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,7 +141,7 @@ label {
   flex-direction: column;
 }
 
-.instructions__list, .instructions__category-list, .instructions__category, .product-catalog-filters__btn-tile-lines-wrp, .main-page-important-slider, .card-prod-catalog__icon-wrp, .header__menu-wrp {
+.faq-page__list, .faq-page__section, .faq-page__content, .instructions__list, .instructions__category-list, .instructions__category, .product-catalog-filters__btn-tile-lines-wrp, .main-page-important-slider, .card-prod-catalog__icon-wrp, .header__menu-wrp {
   display: flex;
   flex-direction: column;
 }
@@ -151,7 +151,7 @@ label {
   margin-right: auto;
 }
 
-.modal__buttons, .instructions, .order-waiting__social-networks-items, .my-order__header-wrapper, .basket__dropdown-input, .card-product-all-info__vendor-code-section, .modal-basket__footer-wrapper, .modal-basket__header-wrapper, .modal-on-click__header, .card-product-header-info.active .card-product-header-info__wrapper, .blog-main-news-main, .personal-area-favorites__sorting-navigation .personal-area-favorites__sorting, .product-catalog-number-goods, .product-catalog-sorting, .product-catalog-filters__filters-text-mob-wrp, .product-catalog-filters__btn-wrp, .product-catalog-filters__price-slider-input-wrp, .product-catalog-filters__price, .product-catalog-filters__title-text-wrp, .product-catalog-filters__menu, .main-page-important-slider__wrp, .main-page-partner__drop-list-def, .main-page-range__img-wrp, .main-page-range__wrp, .main-page-range, .card-prod-catalog__buy, .card-prod-catalog__buy-price, .footer-special-documents__wrp, .footer-content__social-wrp, .footer-content, .search-modal__item-wrp, .header__menu-personal-basket, .header__menu-personal-comparison, .header__menu-personal-login, .header__menu-personal-wrp, .header__phone-menu-schedule-link, .header__phone-menu-schedule, .header__menu-social, .header__menu-work-time-timeline-wrp, .header__menu-name-categoty-wrp, .header__menu-item-link, .header__catalog-item-wrp, .header__wrp-right-cont, .header__languages-wrp, .header__wrp-left-cont, .header__wrp, .lunge__item {
+.faq-page__dropdown-header, .faq-page, .warranty-servise-pop-up__wrp-title-text, .warranty-servise, .modal__buttons, .instructions, .order-waiting__social-networks-items, .my-order__header-wrapper, .basket__dropdown-input, .card-product-all-info__vendor-code-section, .modal-basket__footer-wrapper, .modal-basket__header-wrapper, .modal-on-click__header, .card-product-header-info.active .card-product-header-info__wrapper, .blog-main-news-main, .personal-area-favorites__sorting-navigation .personal-area-favorites__sorting, .product-catalog-number-goods, .product-catalog-sorting, .product-catalog-filters__filters-text-mob-wrp, .product-catalog-filters__btn-wrp, .product-catalog-filters__price-slider-input-wrp, .product-catalog-filters__price, .product-catalog-filters__title-text-wrp, .product-catalog-filters__menu, .main-page-important-slider__wrp, .main-page-partner__drop-list-def, .main-page-range__img-wrp, .main-page-range__wrp, .main-page-range, .card-prod-catalog__buy, .card-prod-catalog__buy-price, .footer-special-documents__wrp, .footer-content__social-wrp, .footer-content, .search-modal__item-wrp, .header__menu-personal-basket, .header__menu-personal-comparison, .header__menu-personal-login, .header__menu-personal-wrp, .header__phone-menu-schedule-link, .header__phone-menu-schedule, .header__menu-social, .header__menu-work-time-timeline-wrp, .header__menu-name-categoty-wrp, .header__menu-item-link, .header__catalog-item-wrp, .header__wrp-right-cont, .header__languages-wrp, .header__wrp-left-cont, .header__wrp, .lunge__item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -163,14 +163,14 @@ label {
   justify-content: left;
 }
 
-.instructions, .name-page, .error-page__wrapper, .order-waiting__wrapper, .basket__ordering-wrapper, .basket__header-wrapper, .block-article, .pagination, .card-product-spare-parts__wrapper, .card-product-gallery__wrapper, .card-product-reviews__wrapper, .card-product-multimedia__wrapper, .card-product-characteristics__wrapper, .card-product-all-info__wrapper, .card-product-navigation__wrapper, .card-product-header-info__name-pages-wrapper, .card-product-header-info.active .card-product-header-info__wrapper, .blog-nav__wrp, .blog-nav, .blog-main-news-main, .personal-area-comparison__wrapper, .personal-area-my-orders__wrapper, .personal-area-favorites__wrapper, .personal-area-private-data__wrapper, .personal-area-navigation__wrapper, .personal-area-header-info__wrapper, .product-catalog-content, .product-catalog-text, .product-catalog, .bread-crumbs, .catalog-directory, .main-page-news__wrp, .main-page-important-slider__text, .main-page-important-slider__wrp, .main-page-partner, .main-page-range__wrp, .main-page-about-company__img-wrp, .main-page-about-company__text, .main-page-product__carousel, .main-slider__nav-btn-wrp, .main-slider__text-btn-wrt, .main-slider__text-btn, .footer-special-documents__wrp, .footer__wrp {
+.faq-page, .warranty-servise, .instructions, .name-page, .error-page__wrapper, .order-waiting__wrapper, .basket__ordering-wrapper, .basket__header-wrapper, .block-article, .pagination, .card-product-spare-parts__wrapper, .card-product-gallery__wrapper, .card-product-reviews__wrapper, .card-product-multimedia__wrapper, .card-product-characteristics__wrapper, .card-product-all-info__wrapper, .card-product-navigation__wrapper, .card-product-header-info__name-pages-wrapper, .card-product-header-info.active .card-product-header-info__wrapper, .blog-nav__wrp, .blog-nav, .blog-main-news-main, .personal-area-comparison__wrapper, .personal-area-my-orders__wrapper, .personal-area-favorites__wrapper, .personal-area-private-data__wrapper, .personal-area-navigation__wrapper, .personal-area-header-info__wrapper, .product-catalog-content, .product-catalog-text, .product-catalog, .bread-crumbs, .catalog-directory, .main-page-news__wrp, .main-page-important-slider__text, .main-page-important-slider__wrp, .main-page-partner, .main-page-range__wrp, .main-page-about-company__img-wrp, .main-page-about-company__text, .main-page-product__carousel, .main-slider__nav-btn-wrp, .main-slider__text-btn-wrt, .main-slider__text-btn, .footer-special-documents__wrp, .footer__wrp, .wrp-title-text {
   max-width: 1440px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.instructions, .block-article, .pagination, .blog-nav__wrp, .blog-main-news-main, .product-catalog-content, .product-catalog-text.catalog-directory__description-wrp, .product-catalog, .bread-crumbs, .catalog-directory, .main-page-news__wrp, .main-page-important-slider__wrp, .main-page-partner, .main-page-range__wrp, .main-page-range, .main-page-about-company__text, .main-slider__text-btn-wrt, .footer-special-documents__wrp, .footer__wrp, .header__wrp {
+.faq-page, .warranty-servise, .instructions, .block-article, .pagination, .blog-nav__wrp, .blog-main-news-main, .product-catalog-content, .product-catalog-text.catalog-directory__description-wrp, .product-catalog, .bread-crumbs, .catalog-directory, .main-page-news__wrp, .main-page-important-slider__wrp, .main-page-partner, .main-page-range__wrp, .main-page-range, .main-page-about-company__text, .main-slider__text-btn-wrt, .footer-special-documents__wrp, .footer__wrp, .header__wrp, .wrp-title-text {
   padding-left: 48px;
   padding-right: 48px;
 }
@@ -603,6 +603,62 @@ html.notOverY {
 .icon-freim.active > .product-catalog-filters__container-icon-hover {
   transform: rotate(180deg);
   transition: 0.3s ease-in;
+}
+
+.wrp-title-text {
+  margin-bottom: 24px;
+}
+@media (max-width: 860px) {
+  .wrp-title-text {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (max-width: 860px) {
+  .wrp-title-text__des {
+    display: none;
+  }
+}
+.wrp-title-text__mob {
+  display: none;
+}
+@media (max-width: 860px) {
+  .wrp-title-text__mob {
+    display: flex;
+  }
+}
+
+.title-text-h1 {
+  min-height: 68px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin-left: -48px;
+  padding-right: 48px;
+  padding-left: 48px;
+  background-color: #c12125;
+  font-family: "Mulish", sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 60px;
+  text-align: center;
+  color: #ffffff;
+}
+@media (max-width: 860px) {
+  .title-text-h1 {
+    width: 100%;
+    margin-left: -16px;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-family: "Mulish", sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 44px;
+    text-align: center;
+    color: #ffffff;
+  }
 }
 
 .header {
@@ -5855,7 +5911,7 @@ html.notOverY {
   padding-top: 12px;
 }
 .personal-area-comparison .compare-parameters-buttons {
-  margin-bottom: 28px;
+  margin-bottom: 15px;
 }
 .personal-area-comparison__characteristics-item {
   border-radius: 4px;
@@ -10830,4 +10886,211 @@ body.lock {
 .modal__btn-download {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   padding: 12px 43px;
+}
+
+.warranty-servise {
+  margin-bottom: 55px;
+}
+@media (max-width: 860px) {
+  .warranty-servise {
+    margin-bottom: 100px;
+    padding-left: 16px;
+    padding-right: 16px;
+    flex-direction: column-reverse;
+  }
+}
+.warranty-servise .text-h3 {
+  text-align: left;
+}
+.warranty-servise__text-wrp {
+  max-width: 728px;
+  max-height: 500px;
+  overflow-x: hidden;
+}
+.warranty-servise__text-wrp::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+@media (max-width: 860px) {
+  .warranty-servise__text-wrp {
+    max-height: none;
+  }
+}
+.warranty-servise .text-main {
+  text-align: left;
+}
+.warranty-servise__paragraph-margin-top {
+  margin-top: 12px;
+}
+.warranty-servise__return-product {
+  margin-bottom: 120px;
+}
+.warranty-servise__return-product-quality {
+  margin-bottom: 60px;
+}
+.warranty-servise__text-red {
+  color: #c12125;
+}
+.warranty-servise__img-wrp {
+  flex-shrink: 0.4;
+}
+@media (max-width: 860px) {
+  .warranty-servise__img-wrp {
+    flex-direction: column;
+  }
+}
+.warranty-servise__img-back {
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+@media (max-width: 860px) {
+  .warranty-servise__img-back {
+    display: none;
+  }
+}
+
+.warranty-servise-pop-up {
+  color: #ffffff;
+}
+.warranty-servise-pop-up__wrp-comnt {
+  max-width: 368px;
+  width: 100%;
+  padding: 20px;
+  overflow: hidden;
+  background-color: #090102;
+  position: relative;
+}
+.warranty-servise-pop-up__wrp-comnt::after {
+  content: "";
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  background-color: #090102;
+}
+.warranty-servise-pop-up__title {
+  font-size: 18px;
+}
+.warranty-servise-pop-up__text-wrp {
+  height: 100vh;
+  overflow-y: auto;
+  text-align: left;
+}
+.warranty-servise-pop-up__text-wrp p + p {
+  margin-top: 12px;
+}
+.warranty-servise-pop-up__text-wrp::-webkit-scrollbar {
+  width: 4px;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+.warranty-servise-pop-up__text-wrp::-webkit-scrollbar-thumb {
+  width: 4px;
+  background: #4e4b4b;
+  border-radius: 4px;
+}
+.warranty-servise-pop-up__text-wrp::-webkit-scrollbar-track {
+  width: 10px;
+  height: 1px;
+  background: #343232;
+}
+
+:root {
+  --height: 0;
+}
+
+.faq-page {
+  align-items: flex-start;
+  gap: 16px;
+}
+@media (max-width: 960px) {
+  .faq-page {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 0 16px;
+  }
+}
+.faq-page__content {
+  height: 512px;
+  gap: 60px;
+  overflow: auto;
+}
+.faq-page__content::-webkit-scrollbar {
+  width: 0;
+}
+@media (max-width: 960px) {
+  .faq-page__content {
+    height: auto;
+  }
+}
+.faq-page__section {
+  max-width: 706px;
+  width: 100%;
+  gap: 16px;
+}
+@media (max-width: 960px) {
+  .faq-page__section {
+    max-width: 100%;
+  }
+}
+.faq-page__title {
+  font-family: "Mulish", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+  color: #090102;
+  text-transform: uppercase;
+}
+.faq-page__list {
+  gap: 8px;
+}
+.faq-page__dropdown {
+  border-radius: 1px;
+}
+.faq-page__dropdown-header {
+  background-color: #ffffff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding: 12px 20px;
+  gap: 16px;
+  cursor: pointer;
+}
+.faq-page__dropdown-header.active .faq-page__arrow {
+  transform: rotateZ(180deg);
+}
+.faq-page__dropdown-header.active .faq-page__dropdown-title {
+  color: #991a1d;
+}
+.faq-page__dropdown-title {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: #090102;
+}
+.faq-page__arrow {
+  font-size: 0;
+  transition: transform 0.2s ease-in-out;
+}
+.faq-page__dropdown-body {
+  height: var(--height);
+  background-color: #F3F2F2;
+  overflow: hidden;
+  transition: height 0.2s ease-in-out;
+}
+.faq-page__dropdown-body-wrp {
+  padding: 12px 40px;
+}
+.faq-page__dropdown-subtitle {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #090102;
 }/*# sourceMappingURL=main.css.map */

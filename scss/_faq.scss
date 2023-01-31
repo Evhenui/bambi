@@ -1,0 +1,117 @@
+:root {
+  --height: 0;
+}
+
+.faq-page {
+  @extend %centre-space-between;
+  @extend %size-page;
+  @extend %padding-country;
+
+  align-items: flex-start;
+
+  gap: 16px;
+
+  @include __960 {
+    flex-direction: column-reverse;
+    align-items: center;
+
+    padding: 0 16px;
+  }
+
+  &__content {
+    height: 512px;
+
+    @extend %flex-columb;
+
+    gap: 60px;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    @include __960 {
+      height: auto;
+    }
+  }
+
+  &__section {
+    max-width: 706px;
+    width: 100%;
+
+    @extend %flex-columb;
+
+    gap: 16px;
+
+    @include __960 {
+      max-width: 100%
+    }
+  }
+
+  &__title {
+    @include text(20px, left, $color-black, 600, 20px);
+    text-transform: uppercase;
+  }
+
+  &__list {
+    @extend %flex-columb;
+
+    gap: 8px;
+  }
+
+  &__dropdown {
+    border-radius: 1px;
+  }
+
+  &__dropdown-header {
+    @extend %centre-space-between;
+
+    background-color: $color-white;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+;
+    padding: 12px 20px;
+    gap: 16px;
+
+    cursor: pointer;
+
+    &.active {
+      .faq-page__arrow {
+        transform: rotateZ(180deg);
+      }
+
+      .faq-page__dropdown-title {
+        color: $color-red-60;
+      }
+    }
+  }
+
+  &__dropdown-title {
+    @include text(14px, left, $color-black, 700, 24px);
+  }
+
+  &__arrow {
+    font-size: 0;
+
+    transition: transform .2s ease-in-out;
+  }
+
+  &__dropdown-body {
+    height: var(--height);
+
+    background-color: #F3F2F2;
+
+    overflow: hidden;
+
+    transition: height .2s ease-in-out;
+  }
+
+  &__dropdown-body-wrp {
+    padding: 12px 40px;
+  }
+
+  &__dropdown-subtitle {
+    @include text(14px, left, $color-black, 400, 24px);
+  }
+}

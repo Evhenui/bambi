@@ -1,12 +1,6 @@
 export let mainPageRangeFun = function() {
     const mainPageRange = document.querySelector('.js-main-page-range-wrp');
 
-   /*  const test = document.querySelector()
-    console.log(mainPageRange.scrollTop, 'scrolltio') */
-
-    window.addEventListener('scroll', ()=> {
-        /* console.log(window.scrollY) */
-    })
     if(mainPageRange != null) {
 
         const mainPageRangeArr = mainPageRange.querySelectorAll('.js-main-page-range');
@@ -21,7 +15,14 @@ export let mainPageRangeFun = function() {
         let interval = -1;
         let intervalCount = 0;
 
-        function test() {
+        window.addEventListener('scroll', ()=> {
+            if(window.scrollY >= mainPageRange.offsetTop) {
+                clearInterval(interval)
+                interval = setInterval(startInterval, 5000);
+            }
+        })
+
+        function startInterval() {
             width = mainPageRange.querySelector('.js-width-slid-wrp').offsetWidth;
             delActivRange(mainPageRangeCircle);
             delActivRange(mainPageRangeCircleRed);
@@ -41,8 +42,9 @@ export let mainPageRangeFun = function() {
                 widthSliderTotal.style.transform = 'translate(-'+ count * width + 'px)';
             }  
         }
+
         clearInterval(interval)
-        interval = setInterval(test, 5000);
+        interval = setInterval(startInterval, 5000);
         
         mainPageRangeArr.forEach((el, index) => {
             width = mainPageRange.querySelector('.js-width-slid-wrp').offsetWidth;
@@ -62,6 +64,7 @@ export let mainPageRangeFun = function() {
 
             })
         });
+
         function delActivRange(param) {
             param.forEach((el) => {
                 el.classList.remove('active')
@@ -89,16 +92,18 @@ export let mainPageRangeFun = function() {
                 })
             }
         }
+
         window.addEventListener('resize', init);
+
         init();
 
         // моб логика
         if(window.innerWidth <= 1090) {
 
-            if(window.innerWidth <= 1090) {}
             function roolSlider() {
                 widthSliderTotal.style.transform = 'translate(-'+count*width+'px)';
             }
+
             widthSliderTotal.addEventListener('touchstart', handleTouchStart, false);
             widthSliderTotal.addEventListener('touchmove', handleTouchMove, false);
             widthSliderTotal.addEventListener('touchend', handleTouchEnd, false)
@@ -110,6 +115,7 @@ export let mainPageRangeFun = function() {
                 const firstTouch = event.touches[0]
                 x1 = firstTouch.clientX;
             }
+
             let xDiffObj = {}
     
             function handleTouchMove(event) {

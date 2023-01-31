@@ -1348,7 +1348,7 @@
 
   &__main-wrapper {
     padding: 12px 8px 14px 8px;
-    overflow-x: auto;
+    overflow: hidden;
   }
   &__button-prev,
   &__button-next {
@@ -1361,6 +1361,10 @@
     height: 40px;
     background-color: $color-white;
     box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.1);
+
+    &.hidden {
+      display: none;
+    }
   }
 
   &__button-next:hover &__button-hover {

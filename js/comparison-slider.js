@@ -3,13 +3,14 @@ export let compparisonSlider = function() {
 
     if(personalComparisonWrp !== null) {
 
-        const sliderWindow = personalComparisonWrp.querySelector('.js-comparison-area');
-        const sliderWidth = personalComparisonWrp.querySelector('[data-personal-area-comp-list]');
+        const sliderWindow = personalComparisonWrp.querySelector('[data-slider-window]');
+        const sliderWidth = personalComparisonWrp.querySelector('[data-slider-width]');
         const slidesLength = personalComparisonWrp.querySelectorAll('[data-personal-area-comp-item]');
-        const sliderFooter = personalComparisonWrp.querySelector('[data-personal-area-comp-list-body]');
+        const sliderBodyElements = personalComparisonWrp.querySelectorAll('[data-slider-footer]');
         const btnPrevSlide = personalComparisonWrp.querySelector('[data-comparison-slider-btn-prev]');
         const btnNextSlide = personalComparisonWrp.querySelector('[data-comparison-slider-btn-next]');
-
+        const bodySlider = personalComparisonWrp.querySelector('[data-body-slider]');
+        
         let distance = 0;
         let translateX = 0;
         let counter = 0;
@@ -18,6 +19,10 @@ export let compparisonSlider = function() {
         let difference = 0;
         let activeTouches = 0;
         let startPosition = 0;
+
+        function getWidthHeader() {
+          sliderWidth.style.width = bodySlider.offsetWidth + 'px';
+        }
 
         function viewButtons() {
             if(sliderWindow.offsetWidth < sliderWidth.scrollWidth) {
@@ -30,7 +35,7 @@ export let compparisonSlider = function() {
         }
 
         function nextSlide() {
-            const maxStep = Math.round(slidesLength.length - sliderWindow.offsetWidth / slidesLength[0].offsetWidth);
+            const maxStep = Math.round(sliderWidth.children.length - sliderWindow.offsetWidth / slidesLength[0].offsetWidth);
             distance = sliderWidth.scrollWidth - sliderWindow.offsetWidth - (translateX + slidesLength[0].offsetWidth);
 
             if (distance >= 0 && counter < maxStep - 1) {
@@ -44,13 +49,16 @@ export let compparisonSlider = function() {
             window.getComputedStyle(sliderWidth).getPropertyValue('--height-page');
             sliderWidth.style.setProperty('--personal-area-translateX', - translateX + 'px');
 
-            window.getComputedStyle(sliderFooter).getPropertyValue('--height-page');
-            sliderFooter.style.setProperty('--personal-area-translateX', -translateX + 'px');
+            sliderBodyElements.forEach(el => {
+              window.getComputedStyle(el).getPropertyValue('--height-page');
+              el.style.setProperty('--personal-area-translateX', -translateX + 'px');
+            })
+            
         }
 
         function prevSlide() {
             const startingPosition = 0;
-            const maxStep = Math.round(slidesLength.length - sliderWindow.offsetWidth / slidesLength[0].offsetWidth);
+            const maxStep = Math.round(sliderWidth.children.length - sliderWindow.offsetWidth / slidesLength[0].offsetWidth);
             distance = sliderWidth.scrollWidth - sliderWindow.offsetWidth - (translateX - slidesLength[0].offsetWidth);
 
             if (distance <= sliderWidth.scrollWidth - sliderWindow.offsetWidth) {
@@ -64,8 +72,10 @@ export let compparisonSlider = function() {
             window.getComputedStyle(sliderWidth).getPropertyValue('--height-page');
             sliderWidth.style.setProperty('--personal-area-translateX', - translateX + 'px');
 
-            window.getComputedStyle(sliderFooter).getPropertyValue('--height-page');
-            sliderFooter.style.setProperty('--personal-area-translateX', -translateX + 'px');
+            sliderBodyElements.forEach(el => {
+              window.getComputedStyle(el).getPropertyValue('--height-page');
+              el.style.setProperty('--personal-area-translateX', -translateX + 'px');
+            })
         }
 
         function handleTouchStart(event) {
@@ -100,26 +110,27 @@ export let compparisonSlider = function() {
         };
     
         const callback = function(mutationsList, observer) {
+          getWidthHeader()
 
-            btnNextSlide.addEventListener('click', nextSlide);
-            btnPrevSlide.addEventListener('click', prevSlide);
-            viewButtons();
+          btnNextSlide.addEventListener('click', nextSlide);
+          btnPrevSlide.addEventListener('click', prevSlide);
+          viewButtons();
 
-            sliderWindow.addEventListener('touchstart', handleTouchStart)
-            sliderWindow.addEventListener('touchmove', handleTouchMove)
-            sliderWindow.addEventListener('touchend', handleTouchEnd)
+          sliderWindow.addEventListener('touchstart', handleTouchStart)
+          sliderWindow.addEventListener('touchmove', handleTouchMove)
+          sliderWindow.addEventListener('touchend', handleTouchEnd)
 
-            sliderFooter.addEventListener('touchstart', handleTouchStart)
-            sliderFooter.addEventListener('touchmove', handleTouchMove)
-            sliderFooter.addEventListener('touchend', handleTouchEnd)
+          bodySlider.addEventListener('touchstart', handleTouchStart)
+          bodySlider.addEventListener('touchmove', handleTouchMove)
+          bodySlider.addEventListener('touchend', handleTouchEnd)
 
-            window.addEventListener('resize', prevSlide);
-            window.addEventListener('resize', viewButtons);
-
+          window.addEventListener('resize', prevSlide);
+          window.addEventListener('resize', viewButtons);
+          window.addEventListener('resize', getWidthHeader);
         };
     
         const observer = new MutationObserver(callback);
         observer.observe(personalComparisonWrp, config);
-      }
+      } 
 
 }

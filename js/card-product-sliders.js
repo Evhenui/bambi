@@ -1,75 +1,7 @@
 export let cardProductSliders = function () {
     const carProduct = document.querySelector("[data-wrapper-car-product]");
+    const dualSlide = document.querySelector('[data-dual-slider]');
     if (carProduct != null) {
-      //----slider zoom----
-      const sliderNavZoom = new Swiper('.modal-zoom__container-navigation', {
-        direction: 'vertical',
-        slidesPerView: 7, 
-        spaceBetween: 12, 
-        navigation: { 
-          nextEl: '.modal-zoom__button-next', 
-          prevEl: '.modal-zoom__button-prev'
-        },
-        freeMode: true, 
-        breakpoints: { 
-          0: { 
-            direction: 'horizontal',
-          },
-          768: { 
-            direction: 'vertical', 
-          }
-        },
-      });
-
-
-      const sliderMainZoom = new Swiper('.modal-zoom__container-basic', {
-        direction: 'horizontal',
-        slidesPerView: 1,
-        spaceBetween: 32,
-        mousewheel: true,
-        navigation: {
-          nextEl: '.modal-zoom__button-next', 
-          prevEl: '.modal-zoom__button-prev'
-        },
-        grabCursor: true,
-        thumbs: { 
-          swiper: sliderNavZoom 
-        },
-        breakpoints: {
-          0: { 
-            direction: 'horizontal',
-          },
-          768: { 
-            direction: 'horizontal',
-          }
-        },
-        on: {
-          init: function () {
-              $('.threesixty .nav_bar').css('top', '50px');
-              window.mainSwiperPopUp = this;
-              window.mainSwiperAttachedEventsPopUp = true;
-          },
-          slideChange: function() {
-              window.mainSwiper.slideTo(this.realIndex, 100, true); // sync to main slaider
-
-              let i360 = this.isEnd && $(this.slides[this.realIndex]).find('.productPopUp').length > 0; // check if 360
-
-              if (i360) {
-                  if (window.mainSwiperAttachedEventsPopUp) {
-                      this.detachEvents();
-                      window.mainSwiperAttachedEventsPopUp = false;
-                  }
-
-              } else {
-                  if (!window.mainSwiperAttachedEventsPopUp) {
-                      this.attachEvents();
-                      window.mainSwiperAttachedEventsPopUp = true;
-                  }
-
-              }
-          }
-        }
-      });
 
       //----slider main------
       const sliderMain = new Swiper('.main-slider-card-prod__container-navigation', {
@@ -94,8 +26,6 @@ export let cardProductSliders = function () {
         }
       });
 
-   
-
 
       const sliderMainNav = new Swiper('.main-slider-card-prod__container-basic', {
         direction: 'horizontal',
@@ -117,33 +47,6 @@ export let cardProductSliders = function () {
             direction: 'horizontal',
         }
         },
-        on: {
-          init: function () {
-              $('.threesixty .nav_bar').css('top', '50px');
-              window.mainSwiper = this;
-              window.mainSwiperAttachedEvents = true;
-          },
-          slideChange: function() {
-              window.mainSwiperPopUp.slideTo(this.realIndex, 100, true); // sync to main popUp slaider
-
-              let i360 = this.isEnd && $(this.slides[this.realIndex]).find('.product1').length > 0; // check if 360
-
-              if (i360) {
-                  if (window.mainSwiperAttachedEvents) {
-                      $('.card-product-all-info__slider-button-turn-around').hide();
-                      this.detachEvents();
-                      window.mainSwiperAttachedEvents = false;
-                  }
-
-              } else {
-                  if (!window.mainSwiperAttachedEvents) {
-                      $('.card-product-all-info__slider-button-turn-around').show();
-                      this.attachEvents();
-                      window.mainSwiperAttachedEvents = true;
-                  }
-              }
-          }
-        }
       }); 
 
 
@@ -180,6 +83,7 @@ export let cardProductSliders = function () {
             },
           },
       });
+
       //-----slider picture---
       const sliderPictures = new Swiper('.card-product-gallery__slider', {
         pagination: {
@@ -208,5 +112,400 @@ export let cardProductSliders = function () {
             },
           },
       });
+    }
+
+    if(dualSlide !== null) {
+      const nextSlide = dualSlide.querySelector('[data-next-slide]');
+      const prevSlide = dualSlide.querySelector('[data-prev-slide]');
+      const pagination = dualSlide.querySelector('[data-pagination]');
+      const slidesPreview = dualSlide.querySelectorAll('[data-slides-preview]');
+      const sliderMain = dualSlide.querySelector('[data-slider-main]');
+      const slidesMain = dualSlide.querySelectorAll('[data-slides-main]');
+      const btnModal = dualSlide.querySelector('[data-btn-modal-zoom]');
+      const modalZoom = document.querySelector('[data-modal-zoom]');
+      const paginationWrp = document.querySelector('[data-pagination-wrp]');
+
+      const nextSlideZoom = document.querySelector('[data-next-slide-zoom]');
+      const prevSlideZoom = document.querySelector('[data-prev-slide-zoom]');
+      const paginationZoom = document.querySelector('[data-pagination-zoom]');
+      const slidesPreviewZoom = document.querySelectorAll('[data-slides-preview-zoom]');
+      const sliderMainZoom = document.querySelector('[data-slider-main-zoom]');
+      const slidesMainZoom = document.querySelectorAll('[data-slides-main-zoom]');
+      const body = document.querySelector("#body-cont");
+      const movingBtn = document.querySelector('[data-moving-btn]');
+
+      let counter = 0;
+      let sliderLength = pagination.children.length;
+      let indexSlide = 0;
+      let activeTouches = false;
+      let startPosition = 0;
+      let positionLeft = 0;
+      let moving = 0;
+      let difference = 0;
+
+//----------------------slider----------------------------------------
+      function delActive(items) {
+        items.forEach(el => {
+          el.classList.remove('active');
+        });
+      }
+
+      function changeSlider() {
+        delActive(slidesPreview)
+        slidesPreview[indexSlide].classList.add('active');
+
+        pagination.scrollTop = counter * slidesPreview[0].offsetWidth;
+
+        sliderMain.style.transform = `translateX(-${counter * slidesMain[0].offsetWidth}px)`;
+      }
+
+      function changeSliderModal() {
+        delActive(slidesPreviewZoom)
+        slidesPreviewZoom[indexSlide].classList.add('active');
+
+        if(slidesPreviewZoom[indexSlide].id) {
+          movingBtn.classList.add('hidden')
+        }else {
+          movingBtn.classList.remove('hidden')
+        }
+
+        paginationZoom.scrollTop = counter * slidesPreviewZoom[0].offsetWidth;
+
+        sliderMainZoom.style.transform = `translateX(-${counter * slidesMainZoom[0].offsetWidth}px)`;
+      }
+
+      function changeCounter(state) {
+        if(state) {
+          indexSlide++;
+          counter++;
+
+          delActive(slidesPreview)
+          slidesPreview[indexSlide].classList.add('active');
+
+          if(slidesPreview[counter].id) {
+            movingBtn.classList.remove('ok')
+          }else {
+            movingBtn.classList.add('ok')
+          }
+
+          if(window.innerWidth > 960) {
+            pagination.scrollTop = counter * slidesPreview[0].offsetWidth;
+          } else {
+            paginationWrp.scrollLeft = counter * slidesPreview[0].offsetWidth;
+          }
+          
+
+          sliderMain.style.transform = `translateX(-${counter * slidesMain[0].offsetWidth}px)`;
+        } else {
+          indexSlide--;
+          counter--;
+
+          delActive(slidesPreview)
+          slidesPreview[indexSlide].classList.add('active');
+
+          if(slidesPreview[counter].id) {
+            movingBtn.classList.remove('ok')
+          }else {
+            movingBtn.classList.add('ok')
+          }
+
+          if(window.innerWidth > 960) {
+            pagination.scrollTop = counter * slidesPreview[0].offsetWidth;
+          } else {
+            paginationWrp.scrollLeft = counter * slidesPreview[0].offsetWidth;
+          }
+
+          sliderMain.style.transform = `translateX(-${counter * slidesMain[0].offsetWidth}px)`;
+        }
+      }
+
+      function changeCounterZoom(state) {
+        if(state) {
+          indexSlide++;
+          counter++;
+
+          delActive(slidesPreviewZoom)
+          slidesPreviewZoom[indexSlide].classList.add('active');
+
+          paginationZoom.scrollTop = counter * slidesPreviewZoom[0].offsetWidth;
+
+          sliderMainZoom.style.transform = `translateX(-${counter * slidesMainZoom[0].offsetWidth}px)`;
+        } else {
+          indexSlide--;
+          counter--;
+
+          delActive(slidesPreviewZoom)
+          slidesPreviewZoom[indexSlide].classList.add('active');
+
+          paginationZoom.scrollTop = counter * 64;
+
+          sliderMainZoom.style.transform = `translateX(-${counter * slidesMainZoom[0].offsetWidth}px)`;
+        }
+      }
+
+      slidesPreview[indexSlide].classList.add('active');
+      slidesPreviewZoom[indexSlide].classList.add('active');
+
+      nextSlide.addEventListener('click', () => {
+        if (counter < sliderLength - 1) {
+          changeCounter(true)
+          changeSliderModal()
+        }
+      })
+
+      prevSlide.addEventListener('click', () => {
+        if (counter !== 0) {
+          changeCounter(false)
+          changeSliderModal()
+        }
+      }) 
+
+      window.addEventListener('resize', () => {
+        pagination.scrollTop = 0;
+        counter = 0;
+        indexSlide = 0;
+
+        delActive(slidesPreview)
+        slidesPreview[0].classList.add('active');
+
+        sliderMain.style.transform = `translateX(${0}px)`;
+      })
+
+      slidesPreview.forEach((el, index) => {
+        el.addEventListener('click', () => {
+          indexSlide = index;
+          counter = index;
+          changeSliderModal()
+
+          delActive(slidesPreview)
+          slidesPreview[index].classList.add('active')
+
+          pagination.scrollTop = counter * slidesPreview[0].offsetWidth;
+
+          sliderMain.style.transform = `translateX(-${counter * slidesMain[0].offsetWidth}px)`;
+        })
+      })
+
+      sliderMain.addEventListener('touchstart', (event) => {
+        activeTouches = true;
+        positionLeft = event.touches[0].clientX;
+        startPosition = event.touches[0].clientX;
+      })
+
+      sliderMain.addEventListener('touchmove', (event) => {
+        if (activeTouches) {
+          const positionMove = event.touches[0].clientX;
+          const diff = positionMove - positionLeft;
+          const fingerSpace = 30;
+        
+          if (
+            startPosition - event.touches[0].clientX < fingerSpace &&
+            startPosition - event.touches[0].clientX > - fingerSpace
+          ) {
+            return false;
+          } else {
+            if (!positionLeft) return false;
+        
+            difference = diff;
+        
+            if (difference > 0) {
+              if (counter !== 0) {
+                changeCounter(false)
+                changeSliderModal()
+              }
+            } else {
+              if (counter !== sliderLength - 1) {
+                changeCounter(true)
+                changeSliderModal()
+              }
+            }
+            positionLeft = null;
+          }
+        }
+      })
+
+      sliderMain.addEventListener('touchend', () => {
+        activeTouches = false;
+      })
+      
+      sliderMain.addEventListener('mousedown', (event) => {
+        activeTouches = true;
+        positionLeft = event.pageX;
+
+        sliderMain.classList.add('move');
+        startPosition = event.pageX;
+      })
+
+      sliderMain.addEventListener('mousemove', (event) => {
+        if (activeTouches) {
+          const positionMove = event.pageX;
+          const diff = positionMove - positionLeft;
+          const fingerSpace = 30;
+        
+          if (
+            startPosition - event.pageX < fingerSpace &&
+            startPosition - event.pageX > - fingerSpace
+          ) {
+            return false;
+          } else {
+            if (!positionLeft) return false;
+        
+            difference = diff;
+        
+            if (difference > 0) {
+              if (counter !== 0) {
+                changeCounter(false)
+                changeSliderModal()
+              }
+            } else {
+              if (counter !== sliderLength - 1) {
+                changeCounter(true)
+                changeSliderModal()
+              }
+            }
+            positionLeft = null;
+          }
+        }
+      })
+      
+      sliderMain.addEventListener('mouseup', () => {
+        activeTouches = false;
+        sliderMain.classList.remove('move');
+      })
+
+      btnModal.addEventListener('click', () => {
+        modalZoom.classList.add('active');
+        document.documentElement.style.overflow = "hidden";
+      })
+//-------------------------------------------------------------------
+
+    
+      nextSlideZoom.addEventListener('click', () => {
+        if (counter < sliderLength - 1) {
+          changeCounterZoom(true)
+          changeSlider()
+        }
+      })
+
+      prevSlideZoom.addEventListener('click', () => {
+        if (counter !== 0) {
+          changeCounterZoom(false)
+          changeSlider()
+        }
+      }) 
+
+      window.addEventListener('resize', () => {
+        paginationZoom.scrollTop = 0;
+        counter = 0;
+        indexSlide = 0;
+
+        delActive(slidesPreviewZoom)
+        slidesPreviewZoom[0].classList.add('active');
+
+        sliderMainZoom.style.transform = `translateX(${0}px)`;
+      })
+
+      slidesPreviewZoom.forEach((el, index) => {
+        el.addEventListener('click', () => {
+          indexSlide = index;
+          counter = index;
+          changeSlider()
+
+          delActive(slidesPreviewZoom)
+          slidesPreviewZoom[index].classList.add('active')
+
+          paginationZoom.scrollTop = counter * slidesPreviewZoom[0].offsetWidth;
+
+          sliderMainZoom.style.transform = `translateX(-${counter * slidesMainZoom[0].offsetWidth}px)`;
+        })
+      })
+
+      sliderMainZoom.addEventListener('touchstart', (event) => {
+        activeTouches = true;
+        positionLeft = event.touches[0].clientX;
+        startPosition = event.touches[0].clientX;
+      })
+
+      sliderMainZoom.addEventListener('touchmove', (event) => {
+        if (activeTouches) {
+          const positionMove = event.touches[0].clientX;
+          const diff = positionMove - positionLeft;
+          const fingerSpace = 30;
+        
+          if (
+            startPosition - event.touches[0].clientX < fingerSpace &&
+            startPosition - event.touches[0].clientX > - fingerSpace
+          ) {
+            return false;
+          } else {
+            if (!positionLeft) return false;
+        
+            difference = diff;
+        
+            if (difference > 0) {
+              if (counter !== 0) {
+                changeCounterZoom(false)
+                changeSlider()
+              }
+            } else {
+              if (counter !== sliderLength - 1) {
+                changeCounterZoom(true)
+                changeSlider()
+              }
+            }
+            positionLeft = null;
+          }
+        }
+      })
+
+      sliderMainZoom.addEventListener('touchend', () => {
+        activeTouches = false;
+      })
+
+      sliderMainZoom.addEventListener('mousedown', (event) => {
+        activeTouches = true;
+        positionLeft = event.pageX;
+
+        sliderMainZoom.classList.add('move');
+        startPosition = event.pageX;
+      })
+
+      sliderMainZoom.addEventListener('mousemove', (event) => {
+        if (activeTouches) {
+          const positionMove = event.pageX;
+          const diff = positionMove - positionLeft;
+          const fingerSpace = 30;
+        
+          if (
+            startPosition - event.pageX < fingerSpace &&
+            startPosition - event.pageX > - fingerSpace
+          ) {
+            return false;
+          } else {
+            if (!positionLeft) return false;
+        
+            difference = diff;
+        
+            if (difference > 0) {
+              if (counter !== 0) {
+                changeCounterZoom(false)
+                changeSlider()
+              }
+            } else {
+              if (counter !== sliderLength - 1) {
+                changeCounterZoom(true)
+                changeSlider()
+              }
+            }
+            positionLeft = null;
+          }
+        }
+      })
+
+      sliderMainZoom.addEventListener('mouseup', () => {
+        activeTouches = false;
+        sliderMainZoom.classList.remove('move');
+      })
+
     }
 }

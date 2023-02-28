@@ -3,6 +3,7 @@
   @extend %padding-country;
 
   @extend %centre-space-between;
+  align-items: flex-start;
 
   margin-bottom: 55px;
 
@@ -77,6 +78,7 @@
 
 .warranty-servise-pop-up {
   color: $color-white;
+
   &__wrp-comnt {
     max-width: 368px;
     width: 100%;
@@ -134,4 +136,61 @@
       background: $color-gray-90;
     }
   }
+}
+
+
+.pop-up {
+  &__wrp {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    background-color: #03020e3d;
+    z-index: 10000000000000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-out;
+
+    &.active {
+      visibility: visible;
+      transition: 0.3s ease-in;
+      opacity: 1;
+    }
+  }
+
+  &__btn-line-l,
+  &__btn-line-r {
+    width: 24px;
+    height: 2px;
+
+    display: flex;
+    position: absolute;
+
+    background-color: $color-white;
+  }
+
+  &__btn-line-l {
+    transform: rotate(45deg);
+  }
+
+  &__btn-line-r {
+    transform: rotate(-45deg);
+  }
+
+  &__btn {
+    width: 44px;
+    height: 44px;
+
+    @extend %centre-flex;
+    cursor: pointer;
+  }
+}
+
+.link-text {
+  cursor: pointer;
 }

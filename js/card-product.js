@@ -1,6 +1,8 @@
 export let cardProduct = function () {
   const carProduct = document.querySelector("[data-wrapper-car-product]");
-  if (carProduct != null) {
+
+  if (carProduct !== null) {
+
     const navigationItem = carProduct.querySelectorAll(
         "[data-item-navigation-car-product]"
       ),
@@ -11,8 +13,8 @@ export let cardProduct = function () {
       headerWrapper = carProduct.querySelector("[data-header-wrapper-hidden]"),
       buttonLike = carProduct.querySelector("[data-navigation-like]"),
       modalOnClick = carProduct.querySelector("[data-modal-on-click]"),
-      modalZoom = carProduct.querySelector("[data-modal-zoom]"),
-      modalBasket = carProduct.querySelector("[data-modal-basket]"),
+      modalZoom = document.querySelector("[data-modal-zoom]"),
+      modalBasket = document.querySelector("[data-modal-basket]"),
       sectionReviews = carProduct.querySelector("[data-card-product-reviews]"),
       characteristicsSection = carProduct.querySelector(
         "[data-characteristics-section]"
@@ -95,43 +97,49 @@ export let cardProduct = function () {
     //----------modal zoom--------------------
     if (modalZoom !== null) {
       const body = document.querySelector("#body-cont"),
-        buttonOpenModalZoom = carProduct.querySelector(
-          "[data-open-modal-zoom]"
-        ),
-        modalZoomContainer = carProduct.querySelector(
+        modalZoomContainer = document.querySelector(
           "[data-modal-zoom-container]"
         ),
-        modalZoomClose = carProduct.querySelector("[data-modal-zoom-close]"),
-        modalZoomButtonBuy = carProduct.querySelector("[data-modal-zoom__buy]"),
-        modalZoomButtonBuyOnClick = carProduct.querySelector(
+        modalZoomClose = document.querySelector("[data-modal-zoom-close]"),
+        modalZoomButtonBuy = document.querySelector("[data-modal-zoom__buy]"),
+        modalZoomButtonBuyOnClick = document.querySelector(
           "[data-modal-zoom__buy-on-click]"
         ),
-        modalBasketOpen = carProduct.querySelector("[data-modal-basket]"),
-        modalBuyOnClickOpen = carProduct.querySelector("[data-modal-on-click]");
+        modalBuyOnClickOpen = document.querySelector("[data-modal-on-click]");
 
-      buttonOpenModalZoom.addEventListener("click", function () {
-        modalZoom.classList.add("active");
-        body.classList.add("lock");
-      });
+        function closeModalZoom() {
+          if(window.innerWidth < 960) {
+            modalZoom.classList.remove("active");
+            document.documentElement.style.overflow = "auto";
+          }
+        }
+
+        closeModalZoom()
+        window.addEventListener('resize', closeModalZoom)
+
       modalZoomClose.addEventListener("click", function () {
         modalZoom.classList.remove("active");
-        body.classList.remove("lock");
+        document.documentElement.style.overflow = "auto";
       });
+
       modalZoom.addEventListener("click", function (e) {
         const click = e.composedPath().includes(modalZoomContainer);
         if (!click) {
           modalZoom.classList.remove("active");
-          body.classList.remove("lock");
+          document.documentElement.style.overflow = "auto";
         }
       });
+
       modalZoomButtonBuy.addEventListener("click", function () {
         modalZoom.classList.remove("active");
-        modalBasketOpen.classList.add("active");
+        modalBasket.classList.add("active");
       });
+
       modalZoomButtonBuyOnClick.addEventListener("click", function () {
         modalZoom.classList.remove("active");
         modalBuyOnClickOpen.classList.add("active");
       });
+
     }
     //----------modal on click--------------------
     if (modalOnClick !== null) {
@@ -162,35 +170,15 @@ export let cardProduct = function () {
       });
     }
     //----------modal basket----------------------
-    if (modalBasket !== null) {
-      const buttonOpenModalBasket = carProduct.querySelector(
-          "[data-by-modal-basket]"
-        ),
-        buttonCloseModalBasket = carProduct.querySelector(
-          "[data-close-modal-basket]"
-        ),
-        modalBasketContainer = carProduct.querySelector(
-          "[data-modal-basket-container]"
-        ),
-        body = document.querySelector("#body-cont");
+    const openBasket = carProduct.querySelector("[data-by-modal-basket]");
+    const body = document.querySelector("#body-cont");
 
-      buttonOpenModalBasket.addEventListener("click", function () {
-        modalBasket.classList.add("active");
-        body.classList.add("lock");
-      });
-      buttonCloseModalBasket.addEventListener("click", function () {
-        modalBasket.classList.remove("active");
-        body.classList.remove("lock");
-      });
+    openBasket.addEventListener('click', () => {
+      modalBasket.classList.add('active')
+      document.documentElement.style.overflow = "hidden";
+    })
 
-      modalBasket.addEventListener("click", function (e) {
-        const click = e.composedPath().includes(modalBasketContainer);
-        if (!click) {
-          modalBasket.classList.remove("active");
-          body.classList.remove("lock");
-        }
-      });
-    }
+
     if (sectionReviews !== null) {
       const textArea = sectionReviews.querySelector(
           "[data-text-area-feedback]"

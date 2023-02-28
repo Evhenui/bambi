@@ -72,17 +72,67 @@ export let personalArea = function () {
             })
           })
 //----------modal close------------------------------------
-buttonCloseModal.forEach((item)=> {
-  item.addEventListener('click', function() {
-    modalWindow.classList.remove('active');
-  })
-  document.addEventListener('click',(e)=>{
-    const click = e.composedPath().includes(modalContainer);
-    if(!click) {
-      modalWindow.classList.remove('active');
-    }
-  })
-})   
+          const bgModal = document.querySelector('.personal-area-modal__mask');
+
+          buttonCloseModal.forEach((item)=> {
+            item.addEventListener('click', function() {
+              if(modalWindow.classList.contains('active')) {
+                modalWindow.classList.remove('active')
+                document.documentElement.style.overflow = "auto";
+              }
+            })
+            bgModal.addEventListener('click',(e)=>{
+              const click = e.composedPath().includes(modalContainer);
+              if(!click) {
+                if(modalWindow.classList.contains('active')) {
+                  modalWindow.classList.remove('active');
+                  document.documentElement.style.overflow = "auto";
+                }
+              }
+            })
+          })   
+
+      const inputEmail = modalWindow.querySelector("[data-modal-input-email]");
+      const labelEmail = modalWindow.querySelector("[data-modal-label-email]");
+
+      const inputName = modalWindow.querySelector("[data-modal-input-name]");
+      const labelName = modalWindow.querySelector("[data-modal-label-name]");
+
+      const inputPhone = modalWindow.querySelector("[data-modal-input-phone]");
+      const labelPhone = modalWindow.querySelector("[data-modal-label-phone]");
+
+      const inputPass = modalWindow.querySelector("[data-modal-input-password]");
+      const labelPass = modalWindow.querySelector("[data-modal-label-password]");
+
+      const inputPassFirst = modalWindow.querySelector("[data-modal-input-password-first]");
+      const labelPassFirst = modalWindow.querySelector("[data-modal-label-password-first]");
+
+      const inputPassSecond = modalWindow.querySelector("[data-modal-input-password-re]");
+      const labelPassSecond = modalWindow.querySelector("[data-modal-label-password-re]");
+
+      function activeLabel(input, label) {
+        input.addEventListener('focus', () => {
+          label.classList.add('active')
+        })
+
+        input.addEventListener('blur', () => {
+          if(input.value === "") {
+            label.classList.remove('active')
+          }
+        })
+      }
+
+      activeLabel(inputEmail, labelEmail)
+
+      activeLabel(inputName, labelName)
+
+      activeLabel(inputPhone, labelPhone)
+
+      activeLabel(inputPass, labelPass)
+
+      activeLabel(inputPassFirst, labelPassFirst)
+
+      activeLabel(inputPassSecond, labelPassSecond)
   }
 //----------------------button show menu comparison-----------------
   if (productButton != null) {
@@ -147,28 +197,47 @@ buttonCloseModal.forEach((item)=> {
 
   if(comparison !== null) {
     const characteristicItems = comparison.querySelectorAll('[data-characteristic-category]');
-    const paramCharacteristic = comparison.querySelectorAll('[data-characteristic-param]');
-    const sectionParam = comparison.querySelectorAll('[data-section-param]');
+    const paramCharacteristic = comparison.querySelectorAll('[data-characteristic-zone]');
+    const mobileZone = comparison.querySelectorAll('[data-slider-footer]');
+    const testParam = comparison.querySelectorAll('[data-characteristic-param]');
+    let acum = [];
 
     const config = {
       attributes: true,
     };
 
-    const callback = function(mutationsList, observer) {
-      characteristicItems.forEach((item, index) => {
-
-        sectionParam.forEach(item => {
-          if(item.children[index].offsetHeight < characteristicItems[index].offsetHeight) {
-            item.children[index].style.height = characteristicItems[index].offsetHeight + 'px'
-          } else {
-            characteristicItems[index].style.height = item.children[index].offsetHeight + 'px'
-          }
+    function getSize() {
+      if(window.innerWidth > 960) {
+        characteristicItems.forEach((el, index) => {
+          paramCharacteristic.forEach(item => {
+            if(paramCharacteristic[index].offsetHeight < characteristicItems[index].offsetHeight) {
+              paramCharacteristic[index].style.height = characteristicItems[index].offsetHeight + 'px'
+            } else {
+              characteristicItems[index].style.height = paramCharacteristic[index].offsetHeight + 'px'
+            }
+          })
         })
-      })
+      } else {
+        characteristicItems.forEach((el, index) => {
+          paramCharacteristic.forEach(item => {
+            paramCharacteristic[index].style.height = 'auto'
+            characteristicItems[index].style.height = 'auto'
+          })
+        })
+      }
+    }
+
+    const testArr = []
+
+    const callback = function(mutationsList, observer) {
+      window.addEventListener('resize', getSize)
+      getSize()
     };
 
     const observer = new MutationObserver(callback);
     observer.observe(comparison, config);
   }
+
+
 
 };

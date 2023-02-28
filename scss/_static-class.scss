@@ -472,3 +472,55 @@ html {
     );
   }
 }
+
+.ocf-noUi-connect::before, .ocf-noUi-handle {
+  background-color: #c12125 !important;
+}
+
+.btn-primary {
+  cursor: auto;
+  max-width: 300px;
+  width: 100%;
+  padding: 12px 0;
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  background: #9c9696;
+  color: #ffffff;
+  border: none;
+  border-radius: 1px;
+
+  &:hover {
+    background: #9c9696;
+    border: none;
+  }
+  &:active {
+    background: #9c9696;
+    border: none;
+  }
+  &:disabled {
+    background: #9c9696;
+    border: none;
+  }
+
+  &.active {
+    cursor: pointer;
+    background: $color-red;
+
+    &:hover {
+      background: $color-red-60;
+    }
+    &:active {
+      background: $color-red-80;
+    }
+    &:disabled {
+      background: $color-gray-50;
+    }
+  }
+
+  @media (max-width: 860px) {
+    max-width: 100%;
+  }
+}

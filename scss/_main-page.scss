@@ -560,13 +560,12 @@
 
   column-gap: 16px;
 
-  @extend %size-page;
+  
   @extend %padding-country;
 
+  background-color: $color-white;
+
   padding-top: 100px;
-  
-  display: flex;
-  justify-content: space-around;
 
   @include __860 {
     height: auto;
@@ -574,7 +573,6 @@
     padding-top: 80px;
   }
 
-  background-color: $color-white;
   & .red-diamonds {
     margin-right: 1px;
   }
@@ -593,9 +591,23 @@
   @include __860 {
     @include padding-mob;
     margin-bottom: 80px;
+  }
+
+  &__wrp {
+    @extend %size-page;
+
+    display: flex;
+    justify-content: space-around;
+
+    gap: 16px;
+
+    
+  @include __860 {
     justify-content: space-between;
     flex-direction: column;
   }
+  }
+
   &__text-wrp {
     max-width: 540px;
 
@@ -639,6 +651,11 @@
     transform: rotate(180deg);
     transition: 0.3s ease-out;
   }
+
+  &__drop-list {
+    cursor: pointer;
+  }
+
   &__drop-list-wrp {
     & .lunge__item {
       padding: 0;
@@ -690,6 +707,7 @@
 
   .input-style__wrp {
     margin-top: 24px;
+    cursor: pointer;
   }
 }
 
@@ -702,6 +720,9 @@
   justify-content: space-between;
 
   background-color: $color-black;
+
+  cursor: grab;
+  user-select: none;
 
   @include __1190 {
     height: 860px;
@@ -913,3 +934,22 @@
   width: 0;
   visibility: hidden;
 }
+
+
+
+.drawing-slider {
+  width: 600px;
+  height: 600px;
+  
+
+		&__wrp {
+		}
+
+		&__slide {
+      width: 400px;
+      height: 400px;
+
+      background-color: black;
+		}
+}
+

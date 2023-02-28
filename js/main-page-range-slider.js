@@ -73,7 +73,6 @@ export let mainPageRangeFun = function() {
 
         function init() {       
             if(window.innerWidth <= 1090) {
-                console.log('hello')
                 width = mainPageRange.querySelector('.js-width-slid-wrp').offsetWidth;
                 widthSliderTotal.style.transform = 'translate(-'+count*width+'px)';
                 if(window.innerWidth < 1090) {

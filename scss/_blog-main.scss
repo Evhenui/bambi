@@ -305,6 +305,11 @@
   }
 
   &__news-wrp-item {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+
     @include set-item-count-in-row(3);
 
     @include __860 {
@@ -326,10 +331,14 @@
 
   &__news-img {
     width: 100%;
+    height: 312px;
+
+    flex: 1 0 auto;
   }
 
   &__news-text-wrp {
     padding-top: 20px;
+    height: 100%;
     background-color: $color-white;
     cursor: pointer;
 
@@ -420,5 +429,12 @@
     margin-right: 12px;
     padding-left: 12px;
     position: relative;
+
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    color: #8a8a8a;
+    display: -webkit-box;
+    overflow: hidden;
+    text-align: center;
   }
 }

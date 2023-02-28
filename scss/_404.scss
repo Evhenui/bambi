@@ -1,6 +1,5 @@
 .error-page {
-  
-
+  min-height: 70vh;
   &__wrapper {
     @extend %size-page;
     @extend %centre-flex-columb;

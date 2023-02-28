@@ -8,7 +8,6 @@ export let mainPageProductSlider = function() {
             el.addEventListener('click', () => {
                 delActive(productSliderLine);
                 delActive(productSliderContent);
-                console.log(productSliderContent[index]);
                 productSliderContent[index].classList.add('active')
                 el.querySelector('.js-product-slider-line').classList.add('active');
             })

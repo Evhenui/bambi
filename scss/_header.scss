@@ -94,7 +94,6 @@
     display: flex;
   }
   &__wrp-right-cont {
-    max-width: 620px;
     width: 100%;
     column-gap: 4px;
     @extend %centre-space-between;
@@ -109,6 +108,11 @@
     @include text($textAlign: left, $color: $color-white);
     opacity: 0;
     border-bottom: 1px solid $color-gray-50;
+
+    &.focus {
+      opacity: 1;
+    }
+    
     &.activeSerch {
       border-bottom: 1px solid $color-gray-50;
       opacity: 1;
@@ -117,10 +121,13 @@
   &__search-form-wrp {
     width: 100%;
     @extend %centre-flex;
+    justify-content: flex-end;
     transition: 0.1s ease-out;
+
     &:hover .header__search-input {
       opacity: 1;
     }
+
     &.activeSerch {
       background-color: $color-gray-100;
       position: absolute;
@@ -165,6 +172,7 @@
   &__btn-search-img-hov {
     display: none;
   }
+
   &__right-item {
     width: 100%;
     max-width: 44px;
@@ -178,6 +186,7 @@
       background-color: $color-gray-90;
     }
   }
+
   &__right-item-icon {
     @include __860 {
       display: none;
@@ -619,10 +628,70 @@
       flex-direction: column;
     }
   }
+
+  &__comparison {
+    width: 44px;
+  }
+
+  .header__comparison-pop-up-wrp {
+    max-width: 280px;
+    width: 100%;
+    display: none;
+
+    position: absolute;
+    top: 70px;
+    right: 24px;
+
+    background-color: $color-gray-100;
+
+    @include text(
+      $size: 14px,
+      $textAlign: center,
+      $color: $color-white,
+      $fontWeight: 400,
+      $lineHeight: 22px
+    );
+
+    &.active {
+      display: block;
+    }
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+
+      top: -7px;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      position: absolute;
+      display: flex;
+
+      background-color: #1a1919;
+      transform: rotate(-45deg);
+      z-index: -1;
+    }
+
+    & .search-modal__item-wrp {
+      padding-left: 20px;
+    }
+  }
+
   &__right-item-amount {
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  &__comparison-menu-item {
+    display: flex;
+    flex: 0 0 44px;
+  }
+
+  &__right-item.btn.btn-link {
+    padding: 0;
   }
 }
 

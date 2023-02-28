@@ -1,0 +1,21 @@
+.comaprison {
+  &.single-page {
+    @extend %size-page;
+
+    padding-bottom: 100px;
+
+    .comaprison__wrp {
+      @extend %padding-country;
+
+      @include __960 {
+        padding: 0 0 0 16px;
+      }
+    }
+
+    .comaprison__top {
+      top: 74px;
+      background-color: #f8f7f7;
+    }
+  }
+}
+

@@ -5,18 +5,20 @@ export let inputanim = function() {
         const inputsWrapper = document.querySelectorAll('[data-input-wrp-item]');
         const input = inputWrp.querySelectorAll('[data-input]');  
         const btn = document.querySelector('[data-btn-send]');
+        const inputLabel = document.querySelectorAll('.input-style__text');
 
-        input.forEach((el) => {
+        inputsWrapper.forEach((el, index) => {
             el.addEventListener('click', () => {
-                el.previousElementSibling.classList.add('active');
-                el.closest('[data-input-wrp-item]').classList.add('active');
-                el.addEventListener('focusout', () => {
-                    if(el.value.trim().length === 0) {
-                        el.previousElementSibling.classList.remove('active');
-                        el.closest('[data-input-wrp-item]').classList.remove('active');
+                inputLabel[index + 1].classList.add('active');
+                el.classList.add('active');
+                input[index].focus()
+                input[index].addEventListener('focusout', () => {
+                    if(input[index].value.trim().length === 0) {
+                        inputLabel[index + 1].classList.remove('active');
+                        el.classList.remove('active');
                     }
                 })
-            });
+            })
         })
 
         input.forEach((item, index) => {

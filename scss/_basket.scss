@@ -20,20 +20,20 @@
     }
 
     &__title {
-        @include text($size: 2.5rem, $color: $color-white, $textAlign: left, $fontWeight: 900, $lineHeight: 60px);
+        @include text($size: 40px, $color: $color-white, $textAlign: left, $fontWeight: 900, $lineHeight: 60px);
         text-transform: uppercase;
         @media (max-width: 960px) {
-            font-size: 2rem;
+            font-size: 32px;
             max-width: 325px;
             width: 100%;
             line-height: 44px;
         }
     }
     &__title.order-header {
-        @include text($size: 1.25rem, $color: $color-black, $textAlign: left, $fontWeight: 600, $lineHeight: 32px);
+        @include text($size: 20px, $color: $color-black, $textAlign: left, $fontWeight: 600, $lineHeight: 32px);
         @include __960 {
             max-width: 159px;
-            @include text($size: 1rem, $fontWeight: 700, $textAlign: left, $lineHeight: 24px);
+            @include text($size: 16px, $fontWeight: 700, $textAlign: left, $lineHeight: 24px);
             margin-right: 59px;
         }
     }
@@ -161,10 +161,10 @@
     &__inputs-data-navigation-link {
         transition: all .3s ease-out;
         display: inline-block;
-        @include text($size: 1.125rem, $color: $color-gray-60, $fontWeight: 700, $lineHeight: 28px);
+        @include text($size: 18px, $color: $color-gray-60, $fontWeight: 700, $lineHeight: 28px);
         @media (max-width: 960px) {
           line-height: 24px;  
-          font-size: 0.875rem;
+          font-size: 14px;
         }
     }
 
@@ -175,12 +175,12 @@
     }
 
     &__subtitle {
-        @include text($size: 0.875rem, $color: $color-black, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
+        @include text($size: 14px, $color: $color-black, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
     }
 
     &__inputs-tilte {
         margin-bottom: 36px;
-        @include text($size: 1.125rem, $color: $color-black, $textAlign: left, $fontWeight: 700, $lineHeight: 28px);
+        @include text($size: 18px, $color: $color-black, $textAlign: left, $fontWeight: 700, $lineHeight: 28px);
     }
 
     &__inputs-tilte.contacts {
@@ -200,7 +200,7 @@
         display: block;
         border: 1px solid $color-gray-60;
         border-radius: 1px;
-        @include text($size: 0.875rem, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
+        @include text($size: 14px, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
         padding: 8.9px 20px;
         max-width: 300px;
         width: 100%;
@@ -230,7 +230,7 @@
     &__label {
         background: $color-white;
         padding: 0 4px;
-        @include text($size: 0.875rem, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
+        @include text($size: 14px, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
         position: absolute;
         pointer-events: none;
         left: 16px;
@@ -246,7 +246,7 @@
     &__input:valid ~ &__label {
         left: 16px;
         top: -17px;
-        font-size: 0.75rem;
+        font-size: 12px;
     }
 
     .personal-area-private-data__label.is-invalid {
@@ -287,7 +287,7 @@
         }
     }
     &__checkbox-label,  &__checkbox-label-pay{
-        @include text($size: 0.875rem, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
+        @include text($size: 14px, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
     }
 
 
@@ -381,7 +381,7 @@
 
     &__explanation-hidden {
         z-index: 5;
-        font-size: 0.75rem;
+        font-size: 12px;
         position: absolute;
         width: 300px;
         display: inline-block;
@@ -397,7 +397,7 @@
 
     &__explanation-hidden-text {
         position: relative;
-        @include text($size: 0.75rem, $color: $color-white, $textAlign: left, $fontWeight: 400, $lineHeight: 20px);
+        @include text($size: 12px, $color: $color-white, $textAlign: left, $fontWeight: 400, $lineHeight: 20px);
         &::after {
             content: '';
             width: 12px;
@@ -463,7 +463,7 @@
     }
 
     &__dropdown-label.active{
-        font-size: 0.75rem;
+        font-size: 12px;
         top: -17px;
     }
 
@@ -493,13 +493,13 @@
         position: absolute;
         left: 16px;
         top: 11px;
-        @include text($size: 0.875rem, $color: $color-gray-60, $textAlign: center, $fontWeight: 400, $lineHeight: 24px);
+        @include text($size: 14px, $color: $color-gray-60, $textAlign: center, $fontWeight: 400, $lineHeight: 24px);
         background-color: $color-white;
         transition: all .2s ease-in-out;
     }
 
     &__dropdown-selected-text {
-        @include text($size: 0.875rem, $color: $color-gray-80, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
+        @include text($size: 14px, $color: $color-gray-80, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
     }
 
     &__dropdown-arrow {
@@ -565,7 +565,7 @@
     }
 
     &__edit-order {
-        @include text($size: 0.875rem, $color: $color-red-40, $fontWeight: 400, $lineHeight: 16px);
+        @include text($size: 14px, $color: $color-red-40, $fontWeight: 400, $lineHeight: 16px);
         text-decoration-line: underline;
         &:active {
             color: $color-red;
@@ -701,7 +701,7 @@
     }
 
     &__total-price-text {
-        @include text($size: 1.125rem, $fontWeight: 700, $lineHeight: 28px);
+        @include text($size: 18px, $fontWeight: 700, $lineHeight: 28px);
     }
 }
 

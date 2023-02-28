@@ -34,7 +34,14 @@ export let header = function() {
     const mobItemMenuActivLeft = document.querySelector('.js-mob-item-active-left');
     const mobItemMenuActivRight = document.querySelector('.js-mob-item-active-right');
     const menuTelMob =  document.querySelector('.header__menu-work-time');
+    const openModalEnter = document.querySelector('[data-open-enter-modal]');
+    const modalEnter = document.querySelector('[data-popup-modal]');
     const arrActivBlock = [menuBtnLine, menuHeader, bodyCont];
+
+    openModalEnter.addEventListener('click', () => {
+        modalEnter.classList.add('active');
+        document.documentElement.style.overflow = "hidden";
+    })
 
     menuBtn.addEventListener('click', function (event) {
         window.getComputedStyle(menuTelMob).getPropertyValue('--width-page');
@@ -70,7 +77,7 @@ export let header = function() {
                 el.classList.toggle('active');
             })
         }
-        closeActive([phoneMenyHeader, jsHeaderCatalog]);
+        closeActive([phoneMenyHeader, jsHeaderCatalog, comparisonPopUp]);
     })
 
     closeMain(menuBtn, menuHeader);
@@ -83,6 +90,16 @@ export let header = function() {
         searchBnt = searchHeader.querySelector('.js-btn-search'),
         searchBntMobClose = searchHeader.querySelector('.js-btn-search-mob-close'),
         searchInput = searchHeader.querySelector('.js-search-input');
+
+        searchInput.addEventListener('focus', () => {
+            searchInput.classList.add('focus')
+        })
+
+        searchInput.addEventListener('blur', () => {
+            if(searchInput.value === "") {
+                searchInput.classList.remove('focus')
+            }
+        })
 
     searchBntMobClose.addEventListener('click', () => {
         if(widthScreen <= 860) {
@@ -130,7 +147,7 @@ export let header = function() {
         blurDel(jsHeaderCatalog);
         searchInput.classList.remove('activeSerch');
         menuHeader.style.setProperty('height', 0 + 'px');
-        closeActive([phoneMenyHeader, menuHeader, menuBtn, menuBtnLine]);
+        closeActive([phoneMenyHeader, menuHeader, menuBtn, menuBtnLine, comparisonPopUp]);
         closeMain(blurMenu);
       
     });
@@ -146,7 +163,7 @@ export let header = function() {
         event.stopPropagation();
         phoneMenyHeader.classList.toggle('active');
             blurDel(phoneMenyHeader);
-        closeActive([jsHeaderCatalog, menuHeader, menuBtn, menuBtnLine]);
+        closeActive([jsHeaderCatalog, menuHeader, menuBtn, menuBtnLine, comparisonPopUp]);
         menuHeader.style.setProperty('height', 0 + 'px');
     })
     closeMain(phoneMenyHeader, phoneMenyHeader);
@@ -180,4 +197,55 @@ export let header = function() {
             blurMenu.classList.remove('active');
         }
     }
+
+    //---------------------open basket-------
+    const btnBasket = document.querySelector('[data-btn-basket]');
+    const modalBasket = document.querySelector('[data-modal-basket]');
+    const modalBasketContainer = document.querySelector('[data-modal-basket-container]');
+    const closeBasketBtn = document.querySelector('[data-close-modal-basket]');
+    const body = document.querySelector("#body-cont");
+    const btnContinue = document.querySelector('.modal-basket__button-continue');
+
+    btnBasket.addEventListener('click', () => {
+        modalBasket.classList.add('active');
+        document.documentElement.style.overflow = "hidden";
+    });
+
+    closeBasketBtn.addEventListener('click', () => {
+        modalBasket.classList.remove('active')
+        document.documentElement.style.overflow = "auto";
+    })
+
+    btnContinue.addEventListener('click', () => {
+        modalBasket.classList.remove('active')
+        document.documentElement.style.overflow = "auto";
+    })
+
+    modalBasket.addEventListener("click", function (e) {
+        const click = e.composedPath().includes(modalBasketContainer);
+        if (!click) {
+          modalBasket.classList.remove("active");
+          document.documentElement.style.overflow = "auto";
+        }
+    });
+
+
+    //Сравниние pop-up
+    const comparisonIcon = document.querySelector('[data-comparison-icon]');
+    const comparisonPopUp = document.querySelector('[data-comparison-pop-up]');
+
+    comparisonIcon.addEventListener('mouseenter', (event) => {
+        event.stopPropagation();
+        closeActive([jsHeaderCatalog, menuHeader, menuBtn, menuBtnLine, phoneMenyHeader]);
+        comparisonPopUp.classList.toggle('active');
+        
+    });
+
+    comparisonPopUp.addEventListener('click', function(event) {
+        event.stopPropagation();
+    })
+
+    document.addEventListener('click', () => {
+        closeActive([comparisonPopUp]);
+    })
 }

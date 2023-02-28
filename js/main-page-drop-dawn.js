@@ -1,5 +1,5 @@
 export let mainPageDropDawnList = function() {
-    const mainPageDropDawnWrp = document.querySelector('[data-main-page-drop-dawn-wrp]');
+    const mainPageDropDawnWrp = document.querySelector('[data-drop-item]');
 
     if(mainPageDropDawnWrp != null) {
         const mainPageDropDawnBtn = mainPageDropDawnWrp.querySelector('[data-dron-btn-main-page]');
@@ -7,7 +7,7 @@ export let mainPageDropDawnList = function() {
         const itemsDropdown = mainPageDropDawnWrp.querySelectorAll('[data-dropdown-itm]');
         const selectedDropdown = mainPageDropDawnWrp.querySelector('[data-selected-dropdown]');
 
-        mainPageDropDawnBtn.addEventListener('click', (event) => {
+        mainPageDropDawnWrp.addEventListener('click', (event) => {
             event.stopPropagation();
             mainPageDropDawnBtn.classList.toggle('active');
             mainPageDropDawn.classList.toggle('active');

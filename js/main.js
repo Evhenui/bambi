@@ -37,7 +37,6 @@ import {cardProduct} from './card-product.js'
 import {cardProductSliders} from './card-product-sliders.js'
         cardProductSliders();
 
-
 import {header} from './header.js'
         header();
          
@@ -52,3 +51,12 @@ import {instructions}  from './instructions.js';
 
 import {faq}  from './faq.js';
         faq(); 
+
+import {warranty}  from './warranty.js';
+        warranty(); 
+
+import {comparison}  from './comparison.js';
+        comparison(); 
+
+import {inputValidate}  from './inputs-validate.js';
+        inputValidate(); 

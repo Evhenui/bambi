@@ -213,6 +213,13 @@ body.lock {
     height: 20px;
     width: 100%;
     transition: height 0.3s;
+
+    & > span {
+      font-family: $font-main;
+      color: $color-gray-20;
+      font-size: 12px;
+      line-height: 20px;
+    }
   }
 
   &__name-pages-wrapper {
@@ -653,6 +660,7 @@ body.lock {
     height: 50vh;
     padding: 12px 40px;
     background: $color-white;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
       width: 0;
@@ -747,7 +755,7 @@ body.lock {
   &__price {
     display: flex;
     flex-direction: column;
-    flex: 0 0 85px;
+    min-width: 85px;
     row-gap: 4px;
     margin-right: 16px;
     text-align: end;
@@ -1483,6 +1491,15 @@ body.lock {
   }
   .card-product-description.download-instruction {
     text-decoration-line: underline;
+
+    & > a {
+      &:hover, 
+      &:active,
+      &:focus,
+      &:visited {
+        color: #c12125;
+      }
+    }
   }
   &__instruction:hover .card-product-description.download-instruction {
     color: $color-red;
@@ -1590,6 +1607,7 @@ body.lock {
     width: 100%;
     display: flex;
     align-items: baseline;
+    overflow: hidden;
     column-gap: 8px;
     @media (max-width: 1380px) {
       max-width: 260px;
@@ -2566,7 +2584,12 @@ body.lock {
     top: 0;
     right: 0;
 
-    padding: 4px 4px 0 0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 4px 4px 0 0;
+    gap: 4px;
   }
 
   &__btn {
@@ -2592,7 +2615,13 @@ body.lock {
   }
 
   &__btn-link {
-    display: none;
+/*     display: none; */
+    font-size: 0;
+    
+    &.hidden {
+      display: none;
+    }
+
     &:hover {
       .card-slider__img-state {
         fill: #c12125;
@@ -2891,4 +2920,15 @@ body.lock {
 
 .slide__image {
   width: 100%;
+}
+
+.card-product-all-info__reviews {
+  cursor: pointer;
+}
+
+.threesixty.product1 {
+  @include __640 {
+    width: 342px !important;
+    height: 342px !important;
+  }
 }

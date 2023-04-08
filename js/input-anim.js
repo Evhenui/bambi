@@ -21,7 +21,7 @@ export let inputanim = function() {
             })
         })
 
-        input.forEach((item, index) => {
+/*         input.forEach((item, index) => {
             item.addEventListener('input', function() {
                 if(input[0].value && input[1].value && input[2].value) {
                     btn.classList.add('btn-red');
@@ -31,6 +31,6 @@ export let inputanim = function() {
                     btn.classList.remove('btn-red');
                 }
             })
-        })
+        }) */
     }
 }

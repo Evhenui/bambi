@@ -7,6 +7,7 @@ export let personalArea = function () {
         sortingFavourite = document.querySelector('.personal-area-favorites__sorting-navigation'),
         sortingList = document.querySelector('.personal-area-favorites__sorting-wrp'),
         comparison = document.querySelector('[data-personal-comparison-wrp]');
+  const privateData = document.querySelector('.personal-area-private-data');
 
         if(sortingFavourite !== null) {
 
@@ -28,7 +29,7 @@ export let personalArea = function () {
 
 
 //----------------------tab menu-----------------
-  if (itemTabMenu != null && tabsItems != null) {
+  if (itemTabMenu !== null && tabsItems !== null) {
     itemTabMenu.forEach(function (item) {
       item.addEventListener("click", function () {
         let currentBtn = item;
@@ -49,7 +50,56 @@ export let personalArea = function () {
     });
   }
 
-  if (modalWindow != null) {
+  if(privateData !== null) {
+    const inputNamePersonalArea = document.querySelector(".js-input-name");
+    const labelNamePersonalArea = document.querySelector(".js-label-name");
+
+    const inputSurnamePersonalArea = document.querySelector(".js-input-surname");
+    const labelSurnamePersonalArea = document.querySelector(".js-label-surname");
+
+    const inputPhonePersonalArea = document.querySelector(".js-input-phone");
+    const labelPhonePersonalArea = document.querySelector(".js-label-phone");
+
+    const inputMailPersonalArea = document.querySelector(".js-input-email");
+    const labelMailPersonalArea = document.querySelector(".js-label-email");
+
+    const inputOldPassPersonalArea = document.querySelector(".js-pass-input-old");
+    const labelOldPassPersonalArea = document.querySelector(".js-pass-label-old");
+
+    const inputNewPassPersonalArea = document.querySelector(".js-password");
+    const labelNewPassPersonalArea = document.querySelector(".js-label-password");
+
+    const inputNewPassRePersonalArea = document.querySelector(".js-password-repead");
+    const labelNewPassRePersonalArea = document.querySelector(".js-label-password-repeat");
+
+    function activeLabel(input, label) {
+      input.addEventListener('focus', () => {
+        label.classList.add('active')
+      })
+
+      input.addEventListener('blur', () => {
+        if(input.value === "") {
+          label.classList.remove('active')
+        }
+      })
+    }
+
+    activeLabel(inputNamePersonalArea, labelNamePersonalArea)
+
+    activeLabel(inputSurnamePersonalArea, labelSurnamePersonalArea)
+
+    activeLabel(inputPhonePersonalArea, labelPhonePersonalArea)
+
+    activeLabel(inputMailPersonalArea, labelMailPersonalArea)
+
+    activeLabel(inputOldPassPersonalArea, labelOldPassPersonalArea)
+
+    activeLabel(inputNewPassPersonalArea, labelNewPassPersonalArea)
+
+    activeLabel(inputNewPassRePersonalArea, labelNewPassRePersonalArea)
+  }
+
+  if (modalWindow !== null) {
     const modalLink = modalWindow.querySelectorAll('.js-modal-tab-item'),
           tabsItems = modalWindow.querySelectorAll(".js-modal-tab-section"),
           buttonCloseModal = modalWindow.querySelectorAll('[data-close-modal]'),
@@ -109,6 +159,7 @@ export let personalArea = function () {
 
       const inputPassSecond = modalWindow.querySelector("[data-modal-input-password-re]");
       const labelPassSecond = modalWindow.querySelector("[data-modal-label-password-re]");
+
 
       function activeLabel(input, label) {
         input.addEventListener('focus', () => {
@@ -175,10 +226,12 @@ export let personalArea = function () {
     const accordionContent = accordion.querySelectorAll('[data-accordion-content]');
 
     window.addEventListener('resize', ()=> {
-      accordionItem.forEach((item, index) => {
-        item.classList.remove('active')
-        accordionContent[index].style.height = 0;
-      })
+      if(window.innerWidth > 960) {
+        accordionItem.forEach((item, index) => {
+          item.classList.remove('active')
+          accordionContent[index].style.height = 0;
+        })
+      }
     })
 
     topSection.forEach((item, index) => {
@@ -237,7 +290,5 @@ export let personalArea = function () {
     const observer = new MutationObserver(callback);
     observer.observe(comparison, config);
   }
-
-
 
 };

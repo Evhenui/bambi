@@ -88,10 +88,10 @@
 }
 
 .waiting-title {
-    @include text($size: 2rem, $color: $color-green, $fontWeight: 800, $lineHeight: 44px);
+    @include text($size: 32px, $color: $color-green, $fontWeight: 800, $lineHeight: 44px);
 }
 .waiting-subtitle {
-    @include text($size: 1rem, $color: rgba(0, 0, 0, 0.9), $fontWeight: 500, $lineHeight: 28px);
+    @include text($size: 16px, $color: rgba(0, 0, 0, 0.9), $fontWeight: 500, $lineHeight: 28px);
 }
 .waiting-subtitle.working-mode {
     font-weight: 700;

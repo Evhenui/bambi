@@ -13,14 +13,27 @@
     @include padding-mob;
   }
   &__item-wrp {
-    margin-right: 4px;
+  /*   margin-right: 4px; */
     display: flex;
-    column-gap: 4px;
+    gap: 4px;
+
     &:hover {
-      color: $color-black;
+      & > a {
+        color: $color-black;
+      }
+    }
+
+    & > a {
+      &:active,
+      &:visited {
+        color: $color-black;
+      }
     }
   }
   &__wrp {
     display: flex;
+    gap: 4px;
+
+    flex-wrap: wrap;
   }
 }

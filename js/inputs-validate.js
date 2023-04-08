@@ -2,10 +2,12 @@ export let inputValidate = function() {
   const modalWindow = document.querySelector('[data-popup-modal]'),
         personalArea = document.querySelector('[data-personal-area-section]'),
         carProduct = document.querySelector("[data-wrapper-car-product]");
+  const homePage = document.querySelector(".main-page-partner");
 
   //------------------input validate---------------------
     function validate(regex, input) {
     return regex.test(input);
+
     }
     function valid(input, label, value) {
     if (value) {
@@ -58,6 +60,7 @@ export let inputValidate = function() {
         })
       })
     }
+    
     if (personalArea !== null) {
         const   inputName = personalArea.querySelector(".js-input-name"),
                 inputSurname = personalArea.querySelector(".js-input-surname"),
@@ -75,53 +78,90 @@ export let inputValidate = function() {
                 labelPassword = personalArea.querySelector(".js-label-password"),
                 labelPasswordRepeat = personalArea.querySelector(".js-label-password-repeat"),
                 inputs = personalArea.querySelectorAll('.js-input');
-//-----------------------modal-------------------------------------------------------
-/*                 inputEmailModal = modalWindow.querySelector("[data-modal-input-email]"),
-                labelEmailModal = modalWindow.querySelector("[data-modal-label-email]"),
-                inputButtonEnterModal = modalWindow.querySelector("[data-modal-button-enter]"),
-                inputsModal = modalWindow.querySelectorAll('.js-modal-input'),
-                inputNameModal = modalWindow.querySelector("[data-modal-input-name]"),
-                inputPhoneModal = modalWindow.querySelector("[data-modal-input-phone]"),
-                inputPasswordFirstModal = modalWindow.querySelector("[data-modal-input-password-first]"),
-                inputPasswordReModal = modalWindow.querySelector("[data-modal-input-password-re]"),
-                labelNameModal = modalWindow.querySelector("[data-modal-label-name]"),
-                labelPhoneModal = modalWindow.querySelector("[data-modal-label-phone]"),
-                labelPasswordFirstModal = modalWindow.querySelector("[data-modal-label-password-first]"),
-                labelPasswordReModal = modalWindow.querySelector("[data-modal-label-password-re]"),
-                inputButtonRegisterModal = modalWindow.querySelector("[data-modal-button-register]"); */
-        
-            const regPhone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
-                  regText = /^([A-Za-z\-\']{1,50})|([А-Яа-я\-\']{1,50})$/,
-                  regEmail = /[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]/;
 
-                    function inputValidate (button) {
-                    button.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        exam(regPhone, labelPhone, inputPhone);
-                        exam(regText, labelName, inputName);
-                        exam(regText, labelSurname, inputSurname);
-                        exam(regEmail, labelEmail, inputEmail);
-                        validPassword(inputPassword, inputPasswordRe, labelPassword, labelPasswordRepeat);
+                const regEmail = /[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]/;
+
+                var maskOptions = {
+                  mask: '+{38} (000)-000-00-00'
+                };
+            
+                var mask = IMask(inputPhone, maskOptions);
+
+                function checkFirstName() {
+                  if(inputName.value.length > 1 && inputName.value !== "") {
+                    inputName.classList.remove("is-invalid")
+                    labelName.classList.remove("is-invalid")
+                  } else {
+                    inputName.classList.add("is-invalid")
+                    labelName.classList.add("is-invalid")
+                  }
+                }
+
+                function checkSecondName() {
+                  if(inputSurname.value.length > 1 && inputSurname.value !== "") {
+                    inputSurname.classList.remove("is-invalid")
+                    labelSurname.classList.remove("is-invalid")
+                  } else {
+                    inputSurname.classList.add("is-invalid")
+                    labelSurname.classList.add("is-invalid")
+                  }
+                }
+
+                function checkPhone() {
+                  if(!validator.isMobilePhone(inputPhone.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])) {
+                    inputPhone.classList.add("is-invalid")
+                    labelPhone.classList.add("is-invalid")
+                  } else {
+                    inputPhone.classList.remove("is-invalid")
+                    labelPhone.classList.remove("is-invalid")
+                  }
+                }
+
+                function checkEmail() {
+                  if(!regEmail.test(inputEmail.value) && !validator.isEmail(inputEmail.value)) {
+                    inputEmail.classList.add("is-invalid")
+                    labelEmail.classList.add("is-invalid")
+                  } else {
+                    inputEmail.classList.remove("is-invalid")
+                    labelEmail.classList.remove("is-invalid")
+                  }
+                }
+
+                function inputValidate (button) {
+                  button.addEventListener("click", function (event) {
+                 /*      event.preventDefault(); */
+                      exam(regPhone, labelPhone, inputPhone);
+                      exam(regText, labelName, inputName);
+                      exam(regText, labelSurname, inputSurname);
+                      exam(regEmail, labelEmail, inputEmail);
+                      validPassword(inputPassword, inputPasswordRe, labelPassword, labelPasswordRepeat);
 /*   
-                        exam(regEmail, labelEmailModal, inputEmailModal);
-                        exam(regPhone, labelPhoneModal, inputPhoneModal);
-                        exam(regText, labelNameModal, inputNameModal);
-                        validPassword(inputPasswordFirstModal, inputPasswordReModal, labelPasswordFirstModal, labelPasswordReModal); */
-                    }
-                    );
-                    }
+                      exam(regEmail, labelEmailModal, inputEmailModal);
+                      exam(regPhone, labelPhoneModal, inputPhoneModal);
+                      exam(regText, labelNameModal, inputNameModal);
+                      validPassword(inputPasswordFirstModal, inputPasswordReModal, labelPasswordFirstModal, labelPasswordReModal); */
+                  }
+                  );
+                }
+
+                checkFirstName()
+                checkSecondName()
+                checkPhone()
+                checkEmail()
+
+                inputPhone.addEventListener('blur', () => {
+                  checkPhone()
+                })
+
+                inputEmail.addEventListener('blur', () => {
+                  checkEmail()
+                })      
                     
-                    isActiveButton(inputs, inputButton, inputButtonMobile)
-   /*                  isActiveButton(inputsModal, inputButtonEnterModal);
-                    isActiveButton(inputsModal, inputButtonRegisterModal); */
+                isActiveButton(inputs, inputButton, inputButtonMobile)
 
-                    inputValidate(inputButton);
-                    inputValidate(inputButtonMobile);
-
-                /*     inputValidate(inputButtonEnterModal);
-                    inputValidate(inputButtonRegisterModal); */
-    }
-
+                inputValidate(inputButton);
+                inputValidate(inputButtonMobile);
+}
 
     if(carProduct !== null ) {
       const  inputNameModalOnClick = carProduct.querySelector("[data-modal-on-click-input-name]"),
@@ -135,7 +175,13 @@ export let inputValidate = function() {
       const  regPhone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
              regText = /^([A-Za-z\-\']{1,50})|([А-Яа-я\-\']{1,50})$/;
 
-            function validInput(regex, input) {
+            var maskOptions = {
+              mask: '+{38} (000)-000-00-00'
+            };
+        
+            var mask = IMask(inputPhoneModalOnClick, maskOptions);
+
+        /*     function validInput(regex, input) {
               return regex.test(input.value);
             }
 
@@ -149,23 +195,74 @@ export let inputValidate = function() {
                  }
                 })
               })
+            } */
+
+            function checkValid() {
+              if(validator.isMobilePhone(inputPhoneModalOnClick.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA']) && inputNameModalOnClick.value.length > 1){
+                buttonModalOnClick.disabled = false
+                buttonModalOnClick.classList.add("active")
+              } else {
+                buttonModalOnClick.disabled = true
+                buttonModalOnClick.classList.remove("active")
+              }
             }
 
+            checkValid()
+
+            inputPhoneModalOnClick.addEventListener('focus', () => {
+              inputPhoneModalOnClick.placeholder = '+38 (';
+            })
+      
+            inputPhoneModalOnClick.addEventListener('blur', () => {
+              inputPhoneModalOnClick.placeholder = '';
+      
+              if(!validator.isMobilePhone(inputPhoneModalOnClick.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])) {
+                inputPhoneModalOnClick.classList.add("is-invalid")
+                labelPhoneModalOnClick.classList.add("is-invalid")
+              } else {
+                inputPhoneModalOnClick.classList.remove("is-invalid")
+                labelPhoneModalOnClick.classList.remove("is-invalid")
+              }
+            })
+
+            inputNameModalOnClick.addEventListener('blur', () => {
+              if(inputNameModalOnClick.value.length > 1) {
+                inputNameModalOnClick.classList.remove("is-invalid")
+                labelNameModalOnClick.classList.remove("is-invalid")
+              } else {
+                inputNameModalOnClick.classList.add("is-invalid")
+                labelNameModalOnClick.classList.add("is-invalid")
+              }
+            })
+
             inputNameModalOnClick.addEventListener('input', function(){
-              exam(regText, labelNameModalOnClick, inputNameModalOnClick)
+              if(validator.isMobilePhone(inputPhoneModalOnClick.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA']) && inputNameModalOnClick.value.length > 1){
+                buttonModalOnClick.disabled = false
+                buttonModalOnClick.classList.add("active")
+              } else {
+                buttonModalOnClick.disabled = true
+                buttonModalOnClick.classList.remove("active")
+              }
             });
+
             inputPhoneModalOnClick.addEventListener('input', function(){
-              exam(regPhone, labelPhoneModalOnClick, inputPhoneModalOnClick)
+              if(validator.isMobilePhone(inputPhoneModalOnClick.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA']) && inputNameModalOnClick.value.length > 1){
+                buttonModalOnClick.disabled = false
+                buttonModalOnClick.classList.add("active")
+              } else {
+                buttonModalOnClick.disabled = true
+                buttonModalOnClick.classList.remove("active")
+              }
             });
           
-            inputsChange(inputsModalOnClick, buttonModalOnClick);
+            /* inputsChange(inputsModalOnClick, buttonModalOnClick); */
 
-            buttonModalOnClick.addEventListener('click', function(event){
+     /*        buttonModalOnClick.addEventListener('click', function(event){
               event.preventDefault();
               if(validInput(regText, inputNameModalOnClick) && validInput(regPhone, inputPhoneModalOnClick)) {
                 modalOnClick.classList.add('done'); 
               }
-            });
+            }); */
     }
    //------------------show password--------------------- 
    if (modalWindow !== null) {
@@ -191,6 +288,8 @@ export let inputValidate = function() {
 
     const inputEmailModal = modalWindow.querySelector("[data-modal-input-email]");
     const labelEmailModal = modalWindow.querySelector("[data-modal-label-email]");
+    const inputEmailModalReg = modalWindow.querySelector("[data-modal-input-email-reg]");
+    const labelEmailModalReg = modalWindow.querySelector("[data-modal-label-email-reg]");
     const inputButtonEnterModal = modalWindow.querySelector("[data-modal-button-enter]");
     const inputsModal = modalWindow.querySelectorAll('.js-modal-input');
     const inptPassEnter = modalWindow.querySelector('[data-modal-input-password]');
@@ -204,68 +303,136 @@ export let inputValidate = function() {
     const labelPasswordReModal = modalWindow.querySelector("[data-modal-label-password-re]");
     const inputButtonRegisterModal = modalWindow.querySelector("[data-modal-button-register]");
 
+    var maskOptions = {
+      mask: '+{38} (000)-000-00-00'
+    };
+
+    var mask = IMask(inputPhoneModal, maskOptions);
+
     const regPhone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
           regText = /^([A-Za-z\-\']{1,50})|([А-Яа-я\-\']{1,50})$/,
           regEmail = /[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]/;
 
       function inputValidate (button) {
       button.addEventListener("click", function (event) {
-          event.preventDefault();
+/*           event.preventDefault(); */
 
-          exam(regEmail, labelEmailModal, inputEmailModal);
-          exam(regPhone, labelPhoneModal, inputPhoneModal);
+        /*   exam(regEmail, labelEmailModal, inputEmailModal);
+          exam(regPhone, labelPhoneModal, inputPhoneModal); */
           exam(regText, labelNameModal, inputNameModal);
           validPassword(inputPasswordFirstModal, inputPasswordReModal, labelPasswordFirstModal, labelPasswordReModal);
       }
       );
       }
 
+      //-------------------------------------------------------------
       inputEmailModal.addEventListener('input', () => {
-        if(inputEmailModal.value !== '' && inptPassEnter.value !== '') {
-          inputButtonEnterModal.classList.add('active')
+        if(regEmail.test(inputEmailModal.value) && validator.isEmail(inputEmailModal.value) && inptPassEnter.value.length >= 4) {
+          inputButtonEnterModal.classList.add('active');
+        }else {
+          inputButtonEnterModal.classList.remove('active')
+        }
+      })
+
+      inputEmailModal.addEventListener('blur', () => {
+        if(!regEmail.test(inputEmailModal.value) && !validator.isEmail(inputEmailModal.value)) {
+          inputEmailModal.classList.add("is-invalid")
+          labelEmailModal.classList.add("is-invalid")
+        } else {
+          inputEmailModal.classList.remove("is-invalid")
+          labelEmailModal.classList.remove("is-invalid")
         }
       })
 
       inptPassEnter.addEventListener('input', () => {
-        if(inputEmailModal.value !== '' && inptPassEnter.value !== '') {
+        if(regEmail.test(inputEmailModal.value) && validator.isEmail(inputEmailModal.value) && inptPassEnter.value.length >= 4) {
           inputButtonEnterModal.classList.add('active')
+        } else {
+          inputButtonEnterModal.classList.remove('active')
         }
+
       })
 
-
+      //-------------------------------------------------------------
 
       inputNameModal.addEventListener('input', () => {
-        if(inputEmailModal.value !== '' && inputPhoneModal.value !== ''
-        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '') {
+        if(regEmail.test(inputEmailModalReg.value) && validator.isEmail(inputEmailModalReg.value) && validator.isMobilePhone(inputPhoneModal.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])
+        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '' && inputPhoneModal.value.length === 19 && inputPasswordFirstModal.value === inputPasswordReModal.value) {
           inputButtonRegisterModal.classList.add('active')
+          inputButtonRegisterModal.disabled = false;
+        }else {
+          inputButtonRegisterModal.classList.remove('active')
+          inputButtonRegisterModal.disabled = true;
         }
       })
 
       inputPhoneModal.addEventListener('input', () => {
-        if(inputEmailModal.value !== '' && inputPhoneModal.value !== ''
-        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '') {
+        if(regEmail.test(inputEmailModalReg.value) && validator.isEmail(inputEmailModalReg.value) && validator.isMobilePhone(inputPhoneModal.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA']) 
+        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '' && inputPhoneModal.value.length === 19 && inputPasswordFirstModal.value === inputPasswordReModal.value) {
           inputButtonRegisterModal.classList.add('active')
+          inputButtonRegisterModal.disabled = false;
+        }else {
+          inputButtonRegisterModal.classList.remove('active')
+          inputButtonRegisterModal.disabled = true;
         }
       })
 
-      inputEmailModal.addEventListener('input', () => {
-        if(inputEmailModal.value !== '' && inputPhoneModal.value !== ''
-        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '') {
+      inputPhoneModal.addEventListener('focus', () => {
+        inputPhoneModal.placeholder = '+38 (';
+      })
+
+      inputPhoneModal.addEventListener('blur', () => {
+        inputPhoneModal.placeholder = '';
+
+        if(!validator.isMobilePhone(inputPhoneModal.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])) {
+          inputPhoneModal.classList.add("is-invalid")
+          labelPhoneModal.classList.add("is-invalid")
+        } else {
+          inputPhoneModal.classList.remove("is-invalid")
+          labelPhoneModal.classList.remove("is-invalid")
+        }
+      })
+
+      inputEmailModalReg.addEventListener('input', () => {
+        if(regEmail.test(inputEmailModalReg.value) && validator.isEmail(inputEmailModalReg.value) && validator.isMobilePhone(inputPhoneModal.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])
+        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '' && inputPhoneModal.value.length === 19 && inputPasswordFirstModal.value === inputPasswordReModal.value) {
           inputButtonRegisterModal.classList.add('active')
+          inputButtonRegisterModal.disabled = false;
+        } else {
+          inputButtonRegisterModal.classList.remove('active')
+          inputButtonRegisterModal.disabled = true;
+        }
+      })
+
+      inputEmailModalReg.addEventListener('blur', () => {
+        if(!validator.isEmail(inputEmailModalReg.value) && !regEmail.test(inputEmailModalReg.value)) {
+          inputEmailModalReg.classList.add("is-invalid")
+          labelEmailModalReg.classList.add("is-invalid")
+        } else {
+          inputEmailModalReg.classList.remove("is-invalid")
+          labelEmailModalReg.classList.remove("is-invalid")
         }
       })
 
       inputPasswordFirstModal.addEventListener('input', () => {
-        if(inputEmailModal.value !== '' && inputPhoneModal.value !== ''
-        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '') {
+        if(regEmail.test(inputEmailModalReg.value) && validator.isEmail(inputEmailModalReg.value) && validator.isMobilePhone(inputPhoneModal.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])
+        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '' && inputPhoneModal.value.length === 19 && inputPasswordFirstModal.value === inputPasswordReModal.value) {
           inputButtonRegisterModal.classList.add('active')
+          inputButtonRegisterModal.disabled = false;
+        }else {
+          inputButtonRegisterModal.classList.remove('active')
+          inputButtonRegisterModal.disabled = true;
         }
       })
 
       inputPasswordReModal.addEventListener('input', () => {
-        if(inputEmailModal.value !== '' && inputPhoneModal.value !== ''
-        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '') {
+        if(regEmail.test(inputEmailModalReg.value) && validator.isEmail(inputEmailModalReg.value) && validator.isMobilePhone(inputPhoneModal.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])
+        && inputNameModal.value !== '' && inputPasswordFirstModal.value !== '' && inputPasswordReModal.value !== '' && inputPhoneModal.value.length === 19 && inputPasswordFirstModal.value === inputPasswordReModal.value) {
           inputButtonRegisterModal.classList.add('active')
+          inputButtonRegisterModal.disabled = false;
+        } else {
+          inputButtonRegisterModal.classList.remove('active')
+          inputButtonRegisterModal.disabled = true;
         }
       })
 
@@ -294,6 +461,93 @@ export let inputValidate = function() {
       }
 
       showPass(btnShowPassPersonalArea)
+
+    }
+
+    const footerInput = document.querySelector(".footer-content__input");
+    const footerButton = document.querySelector(".footer-content__form-btn");
+
+    const regEmail = /[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]/;
+
+    if(footerInput !== null) {
+      footerInput.addEventListener('input', () => {
+        if(regEmail.test(footerInput.value) && validator.isEmail(footerInput.value)) {
+          footerButton.classList.remove('btn-red-disabled')
+          footerButton.classList.add('btn-red')
+        } else {
+          footerButton.classList.add('btn-red-disabled')
+          footerButton.classList.remove('btn-red')
+        }
+      })
+    }
+
+    if(homePage !== null) {
+      const wrpLastName = homePage.querySelector("[data-wrp-last-name]");
+      const labelLastName = homePage.querySelector("[data-home-label-last-name]");
+      const inputLastName = homePage.querySelector("[data-home-input-last-name]");
+
+      const wrpTel = homePage.querySelector("[data-wrp-tel]");
+      const labelTel = homePage.querySelector("[data-home-label-tel]");
+      const inputTel = homePage.querySelector("[data-home-input-tel]");
+
+      const wrpTextarea = homePage.querySelector("[data-wrp-textarea]");
+      const labelTextarea = homePage.querySelector("[data-home-textarea-label]");
+      const inputTextarea = homePage.querySelector("[data-home-textarea]");
+
+      const btn = homePage.querySelector("[data-btn-send]");
+
+      var maskOptions = { mask: '+{38} (000)-000-00-00' };
+  
+      var mask = IMask(inputTel, maskOptions);
+
+      function checkValidInputs() {
+        if(validator.isMobilePhone(inputTel.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA']) 
+        && inputLastName.value.length > 1 && inputTel.value.length === 19 && inputTextarea.value.length > 1) {
+          btn.disabled = false;
+          btn.classList.remove('btn-red-disabled');
+          btn.classList.add('btn-red');
+        }else {
+          btn.disabled = true;
+          btn.classList.add('btn-red-disabled');
+          btn.classList.remove('btn-red');
+        }
+      }
+
+      checkValidInputs()
+
+      inputLastName.addEventListener("blur", () => {
+        if(inputLastName.value.length > 1 && inputLastName.value !== "") {
+          wrpLastName.classList.remove("invalid")
+        } else {
+          wrpLastName.classList.add("invalid")
+        }
+      })
+
+      inputTel.addEventListener('focus', () => {
+        inputTel.placeholder = '+38 (';
+      })
+
+      inputTel.addEventListener('blur', () => {
+        inputTel.placeholder = '';
+
+        if(!validator.isMobilePhone(inputTel.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])) {
+          wrpTel.classList.add("invalid")
+        } else {
+          wrpTel.classList.remove("invalid")
+        }
+      })
+
+      inputTextarea.addEventListener("blur", () => {
+     /*    if(inputTextarea.value.length > 1) {
+          wrpTextarea.classList.remove("invalid")
+        } else {
+          wrpTextarea.classList.add("invalid")
+        } */
+      })
+
+      inputLastName.addEventListener("input", checkValidInputs)
+      inputTel.addEventListener("input", checkValidInputs)
+      inputTextarea.addEventListener("input", checkValidInputs)
 
     }
 }

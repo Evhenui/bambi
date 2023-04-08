@@ -6,7 +6,7 @@
         position: fixed;
         width: 100%;
         background-color: $color-gray-95;
-        z-index: 100000;
+        z-index: 10000;
     }
     &__header-wrapper {
         @extend %size-page;       
@@ -72,6 +72,10 @@
     &__inputs-data {
         max-width: 664px;
         width: 100%;
+
+        @include __960 {
+            max-width: 100%;
+        }
     }
 
     &__inputs-data-header {
@@ -91,6 +95,10 @@
         display: flex;
         flex-wrap: wrap;
         gap: 32px 24px;  
+
+        &.form {
+            margin: 0;
+        }
         @include __960 {
             flex-direction: column;
             gap: 32px 0;
@@ -124,9 +132,9 @@
         width: 100%;
         text-align: center;
         position: relative;
-        @media (max-width: 960px) {
-            max-width: 165px;  
-        }
+
+        @include text($size: 18px, $color: $color-gray-60, $fontWeight: 700, $lineHeight: 28px);
+
         &::after {
             content: '';
             width: 0;
@@ -191,6 +199,15 @@
         margin: 0;
         flex: 1 1 300px;
         position: relative;
+
+        &.delivery {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+
         @include __960 {
             flex: 1;
         }
@@ -200,26 +217,33 @@
         display: block;
         border: 1px solid $color-gray-60;
         border-radius: 1px;
-        @include text($size: 14px, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
+        font-size: 14px !important;
+        color: $color-gray-60;
+        font-family: $font-main !important;
+        text-align: left !important;
+        font-weight: 400 !important;
+        line-height: 24px !important;
         padding: 8.9px 20px;
         max-width: 300px;
         width: 100%;
+
         &:hover {
-            border-color: $color-red-60;
-          }
+            border-color: $color-red-60 !important;
+        }
           &:active, &:focus{
-            border-color: $color-black;
+            border-color: $color-black !important;
           }
+
           @media (max-width: 960px) {
-            max-width: 327px;
+            max-width: 300px;
+            height: 44px;
           }
+
           &::placeholder {
-            color: $color-gray-100;
+            color: $color-gray-100 !important;
           }
           &:focus,
-          &:active,
-          &:read-only,
-          &:read-write {
+          &:active {
             color: $color-gray-100;
             outline: 0;
             outline-offset: 0;
@@ -513,11 +537,12 @@
         top: 44px;
     } 
 }
+
 .my-order {
     max-width: 468px;
     width: 100%;
     @media (max-width: 1250px) {
-        max-width: 400px;
+        max-width: 100%;
     }
     &__wrapper {  
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.1);
@@ -603,7 +628,7 @@
     }
     
     &__full-information {
-        min-height: 477px;
+        min-height: 194px;
         @include __960 {
             min-height: auto;
             height: 0;
@@ -735,4 +760,166 @@
 }
 
 
+.selected {
+    position: relative;
 
+    &.hidden {
+        display: none;
+    }
+
+    &:hover {
+        .selected__select {
+            border-color: #991a1d;
+        }
+
+        .selected__dropdown-arrow-hover {
+            fill: #991a1d;
+        }
+
+        .selected__caption.active {
+            color: #991a1d;
+        }
+    }
+
+    &__select {
+        width: 300px;
+        height: 44px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        border: 1px solid #827d7d;
+        border-radius: 1px;
+
+        padding: 10px 16px 10px 20px;
+
+        &.active {
+            .selected__arrow {
+                transform: rotateZ(180deg);
+            }
+        }
+    }
+
+    &__input {
+        @include text($size: 14px, $fontWeight: 400, $lineHeight: 24px);
+        text-align: left;
+        color: #827d7d;
+    }
+
+    &__caption {
+        display: inline-block;
+        
+        position: absolute;
+        left: 16px;
+        top: 11px;
+
+        @include text($size: 14px, $fontWeight: 400, $lineHeight: 24px);
+        text-align: center;
+        color: #827d7d;
+
+        background-color: #ffffff;
+
+        padding: 0 4px;
+        transition: all 0.2s ease-in-out;
+
+        &.active {
+            font-size: 12px;
+            top: -17px;
+        }
+    }
+
+    &__arrow {
+        font-size: 0;
+
+        transition: transform .2s ease-in-out;
+    }
+
+    &__option-list {
+        width: 100%;
+        height: 200px;
+
+        position: absolute;
+        z-index: 2;
+        top: 44px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        background-color: #ffffff;
+
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in;
+
+        overflow: auto;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            width: 0px;
+          }
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__option-item {
+        min-height: 40px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: relative;
+        z-index: 200;
+
+        padding: 0 12px;
+        gap: 4px;
+        
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fff9fa;
+
+            & > .red-diamonds {
+                opacity: 1;
+                transition: 0.3s ease-in;
+            }
+        }
+
+        &:active {
+            background-color: #fff3ef;
+        }
+
+        &.empty {
+            @include text($size: 14px, $fontWeight: 400, $lineHeight: 22px);
+            text-align: left;
+            color: #4e4b4b;
+        }
+    }
+
+    &__option-text {
+        @include text($size: 14px, $fontWeight: 400, $lineHeight: 22px);
+        text-align: left;
+        color: #4e4b4b;
+    }
+}
+
+
+.my-order__edit-order,
+.basket__footer-link {
+    &:focus,
+    &:visited {
+        color: #df9793;
+        text-decoration-line: underline;
+    }
+
+    &:hover,
+    &:active {
+        color: #C12125;
+        text-decoration-line: underline;
+    }
+}

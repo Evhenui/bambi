@@ -11,6 +11,8 @@ export let compparisonSlider = function() {
         const btnNextSlide = personalComparisonWrp.querySelector('[data-comparison-slider-btn-next]');
         const bodySlider = personalComparisonWrp.querySelector('[data-body-slider]');
         
+      if(slidesLength.length ) { 
+
         let distance = 0;
         let translateX = 0;
         let counter = 0;
@@ -132,5 +134,5 @@ export let compparisonSlider = function() {
         const observer = new MutationObserver(callback);
         observer.observe(personalComparisonWrp, config);
       } 
-
+    }
 }

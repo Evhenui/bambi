@@ -79,6 +79,10 @@ html {
   @extend %centre-flex;
   border: 1px solid $color-red;
 
+  & > a {
+    color: #c12125;
+  }
+
   @include text(
     $size: 14px,
     $textAlign: center,
@@ -146,6 +150,7 @@ html {
 }
 
 .red-diamonds {
+  flex: 0 0 6px;
   width: 6px;
   height: 6px;
   display: flex;
@@ -522,5 +527,14 @@ html {
 
   @media (max-width: 860px) {
     max-width: 100%;
+  }
+}
+
+
+.ocf-container {
+  @media (max-width: 767px) {
+    /* display: block !important; */
+    width: 100% !important;
+    transform: translateX(0%) translate3d(0,0,0) !important;
   }
 }

@@ -9,6 +9,8 @@ export let comparison = function() {
       const btnPrevSlide = comparison.querySelector('[data-comparison-slider-btn-prev]');
       const btnNextSlide = comparison.querySelector('[data-comparison-slider-btn-next]');
       const bodySlider = comparison.querySelector('[data-body-slider]');
+
+    if(slidesLength.length) {
         
       let distance = 0;
       let translateX = 0;
@@ -122,4 +124,5 @@ export let comparison = function() {
       window.addEventListener('resize', viewButtons);
       window.addEventListener('resize', getWidthHeader);
     } 
+  }
 }

@@ -118,6 +118,22 @@
       margin-bottom: 40px;
     }
 
+    & .swiper-slide {
+      height: auto;
+    }
+
+    & .card-prod-catalog {
+      height: 100%;
+    }
+
+    & .card-prod-catalog__wrp {
+      height: 100%;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     & .card-prod-catalog {
       @include __1458 {
         max-width: 324px;
@@ -143,6 +159,7 @@
   &__carousel-top-nav-wrp {
     height: 40px;
     @extend %centre-flex;
+
     & > .swiper-button-prev,
     .swiper-button-next {
       position: relative;
@@ -579,6 +596,14 @@
   & .input-wrp__text {
     background-color: $color-white;
   }
+  & .input-style__wrp.invalid {
+    border-color: #991a1d;
+    
+    & > .input-style__text {
+      color: #991a1d;
+    }
+  }
+
   & .input-style__wrp {
     max-width: 100%;
   }
@@ -695,6 +720,10 @@
   &__btn {
     max-width: 100%;
     margin-top: 20px;
+
+    &:disabled {
+      cursor: auto;
+    }
 
     &.btn-red-disabled {
       max-width: 100%;

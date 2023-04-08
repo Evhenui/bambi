@@ -1,7 +1,10 @@
 .card-prod-catalog {
   // max-width: 324px;
   // width: 100%;
-  transition: all 0.1s ease-in-out;
+  --row-gap: 16px;
+  --gap: 16px;
+
+ /*  transition: all 0.1s ease-in-out; */
   background-color: $color-white;
 
   @include set-item-count-in-row(4);
@@ -23,8 +26,27 @@
   }
 
   &__wrp {
-    padding: 0 12px;
+    padding: 24px 12px 12px 12px;
     position: relative;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    @include __860 {
+      gap: 0;
+    }
+
+    .image_section {
+      a {
+        display: flex;
+        padding: 24px 12px 0 12px;
+      }
+    }
   }
   &__nameplate-top-wrp {
     @include card-prod-cat-late;
@@ -39,18 +61,22 @@
   }
   &__icon-wrp {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 4px;
+    right: 4px;
     @extend %flex-columb;
   }
   &__img {
     @extend %centre-flex;
     @extend %centre-marg;
 
-    @include __640 {
-      max-width: 126px;
+    @include __960 {
+      max-width: 295px;
       width: 100%;
     }
+ 
+/*     @include __480 {
+      height: 276px;
+    } */
   }
   &__title-text {
     margin-bottom: 4px;
@@ -60,6 +86,12 @@
       $fontWeight: 700,
       $lineHeight: 20px
     );
+
+    & > a {
+      &:hover {
+        color: #090102;
+      }
+    }
   }
   &__rating-wrp {
     width: 60px;
@@ -136,9 +168,10 @@
   &__colors-wrp {
     max-width: 264px;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     @extend %centre-flex;
     @extend %centre-marg;
+
     @include __480 {
       max-width: 106px;
     }
@@ -203,7 +236,6 @@
   }
   &__buy-price {
     min-height: 44px;
-    padding-bottom: 12px;
     @extend %centre-space-between;
   }
   &__buy {
@@ -227,8 +259,8 @@
     }
   }
   &__buy-img {
-    padding-left: 11px;
-    margin-right: 12px;
+/*     padding-left: 11px;
+    margin-right: 12px; */
   }
   &__buy-text {
     width: 0;
@@ -336,28 +368,49 @@
 .horizontal-card {
   & .card-prod-catalog {
     @include __860 {
+      position: relative;
+
       width: 100%;
     }
   }
+
+  .image_section > a {
+    padding: 0;
+  }
+
+  .card-prod-catalog__colors-wrp {
+    margin: 0;
+  }
+
   & .card-prod-catalog__wrp {
-    padding: 0 4px;
+    padding: 20px 4px 12px 4px;
     column-gap: 9px;
 
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
+    flex-direction: row;
   }
-  & .card-prod-catalog__icon-wrp {
-    // margin-right: 16px;
 
-    position: inherit;
-    top: inherit;
-    left: inherit;
-    right: inherit;
+  & .card-prod-catalog__icon-wrp {
+    position: absolute;
+
+    top: 4px;
+    right: 4px;
+
+    gap: 4px;
   }
+
+  .card-prod-catalog__horiz-wrp-title-price {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
   & .card-prod-catalog__horiz-wrp-title-price-wrp {
-    margin-bottom: 20px;
-    padding-top: 20px;
+    padding-right: 52px;
 
     display: flex;
     column-gap: 16px;
@@ -372,9 +425,17 @@
     padding-left: 0;
     align-items: center;
     margin: 0 auto;
-
-
   }
+
+  .card-prod-catalog__img {
+    max-width: 128px;
+  }
+
+  .card-prod-catalog__colors-item {
+    width: 12px;
+    height: 12px;
+  }
+
   &.product-catalog-wrp-prod.active > .card-prod-catalog {
     @include __1280 {
       width: 100%;

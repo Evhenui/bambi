@@ -1,19 +1,15 @@
 export let header = function() {
     const bodyCont = document.getElementById('body-cont');
     const blurMenu = document.querySelector('.js-clacc-blur');
-
+    const modalBasket = document.querySelector('[data-modal-basket]');
     // if(blurMenu != null) {
     // window.getComputedStyle(blurMenu).getPropertyValue('--height-page');
     // blurMenu.style.setProperty('--height-page', (bodyCont.scrollHeight * 1.5) + 'px');
     // } 
-    
-    
-    
+
     let widthScreen = window.innerWidth;
     let hidthSizePage = document.documentElement.clientHeight;
     window['widthScreen'] = widthScreen
-    
-    
 
     //каталог в меню
     
@@ -37,46 +33,117 @@ export let header = function() {
     const openModalEnter = document.querySelector('[data-open-enter-modal]');
     const modalEnter = document.querySelector('[data-popup-modal]');
     const arrActivBlock = [menuBtnLine, menuHeader, bodyCont];
+    const comparisonMenu = document.querySelector('[data-comparison-link]');
 
-    openModalEnter.addEventListener('click', () => {
-        modalEnter.classList.add('active');
-        document.documentElement.style.overflow = "hidden";
+    const mobileCart = document.querySelector('[data-cart-mobile]');
+    const enterMobile = document.querySelector('[data-enter-mobile]');
+    const registerMobile = document.querySelector('[data-register-mobile]');
+
+    const modalRegId = document.querySelector('#modal-register');
+    const modalEnterId = document.querySelector('#modal-enter');
+    const modalTabs = document.querySelectorAll('.js-modal-tab-item');
+
+    function removeActive() {
+        menuTelMob.classList.remove('active');
+
+        mobItemMenuActivLeft.classList.remove('active');
+        mobItemMenuActivRight.classList.remove('active');
+
+        arrActivBlock.forEach((el) => {
+            el.classList.remove('active');
+        });
+        
+        mobItemMenu.forEach((el) => {
+            el.classList.remove('active');
+        });
+
+        mobItemMenuActiv.forEach((el) => {
+            el.classList.remove('active');
+        });
+
+        closeActive([phoneMenyHeader, jsHeaderCatalog, comparisonPopUp]);
+    }
+
+    mobileCart.addEventListener('click', () => {
+        removeActive()
+
+        modalBasket.classList.add('active');
+        menuHeader.style.setProperty('height', 0);
     })
 
+    enterMobile.addEventListener('click', ()=> {
+        removeActive()
+
+        modalEnter.classList.add('active');
+
+        modalEnterId.classList.remove('active')
+        modalRegId.classList.remove('active')
+        modalTabs[0].classList.remove('active')
+        modalTabs[1].classList.remove('active')
+
+        modalEnterId.classList.add('active')
+        modalTabs[0].classList.add('active')
+
+        menuHeader.style.setProperty('height', 0);
+    })
+
+    registerMobile.addEventListener('click', ()=> {
+        removeActive()
+
+        modalRegId.classList.add('active')
+
+        modalEnterId.classList.remove('active')
+        modalRegId.classList.remove('active')
+        modalTabs[0].classList.remove('active')
+        modalTabs[1].classList.remove('active')
+
+        modalRegId.classList.add('active')
+        modalTabs[1].classList.add('active')
+
+        modalEnter.classList.add('active');
+        menuHeader.style.setProperty('height', 0);
+    })
+
+
+    if(openModalEnter) {
+        openModalEnter.addEventListener('click', () => {
+            modalEnter.classList.add('active');
+            document.documentElement.style.overflow = "hidden";
+        })
+    }
+
     menuBtn.addEventListener('click', function (event) {
-        window.getComputedStyle(menuTelMob).getPropertyValue('--width-page');
-        menuTelMob.style.setProperty('--width-page', (widthScreen) + 'px');
-                menuTelMob.classList.toggle('active')
-        if(menuHeader.classList.contains('active') === true) {
-            menuHeader.style.setProperty('height', 0 + 'px');
+        menuTelMob.classList.toggle('active');
+
+        if(menuHeader.classList.contains('active')) {
+            menuHeader.style.setProperty('height', 0);
+            document.documentElement.style.overflow = "auto";
         } else {
-            menuHeader.style.setProperty('height', hidthSizePage + 'px');
+            menuHeader.style.setProperty('height', 100 + 'vh');
+            document.documentElement.style.overflow = "hidden";
         }
-        if(widthScreen <= 460) {
-            menuHeader.style.setProperty('width', widthScreen + 'px');
-        }
+
         event.stopPropagation();
         event.target.classList.toggle('active');
+        
         closeMain(blurMenu);
         blurDel(menuBtn);
-        if(widthScreen <= 860) {
-            arrActivBlock.forEach((el) => {
-                el.classList.toggle('active');
-            });
-            
-            mobItemMenu.forEach((el) => {
-                el.classList.toggle('active');
-            });
-            mobItemMenuActiv.forEach((el) => {
-                el.classList.toggle('active');
-            });
-            mobItemMenuActivLeft.classList.toggle('active');
-            mobItemMenuActivRight.classList.toggle('active');
-        } else {
-            arrActivBlock.forEach((el) => {
-                el.classList.toggle('active');
-            })
-        }
+
+        arrActivBlock.forEach((el) => {
+            el.classList.toggle('active');
+        });
+        
+        mobItemMenu.forEach((el) => {
+            el.classList.toggle('active');
+        });
+
+        mobItemMenuActiv.forEach((el) => {
+            el.classList.toggle('active');
+        });
+
+        mobItemMenuActivLeft.classList.toggle('active');
+        mobItemMenuActivRight.classList.toggle('active');
+
         closeActive([phoneMenyHeader, jsHeaderCatalog, comparisonPopUp]);
     })
 
@@ -146,7 +213,7 @@ export let header = function() {
         jsHeaderCatalog.classList.toggle('active');
         blurDel(jsHeaderCatalog);
         searchInput.classList.remove('activeSerch');
-        menuHeader.style.setProperty('height', 0 + 'px');
+        menuHeader.style.setProperty('height', 0);
         closeActive([phoneMenyHeader, menuHeader, menuBtn, menuBtnLine, comparisonPopUp]);
         closeMain(blurMenu);
       
@@ -164,7 +231,7 @@ export let header = function() {
         phoneMenyHeader.classList.toggle('active');
             blurDel(phoneMenyHeader);
         closeActive([jsHeaderCatalog, menuHeader, menuBtn, menuBtnLine, comparisonPopUp]);
-        menuHeader.style.setProperty('height', 0 + 'px');
+        menuHeader.style.setProperty('height', 0);
     })
     closeMain(phoneMenyHeader, phoneMenyHeader);
 
@@ -173,7 +240,8 @@ export let header = function() {
         if(bodyCont != null) {
             bodyCont.addEventListener('click', () => {
                 params.classList.remove('active');
-                menuHeader.style.setProperty('height', 0 + 'px');
+                document.documentElement.style.overflow = "auto";
+                menuHeader.style.setProperty('height', 0);
             })
         }
         if(stopRrop != null) {
@@ -200,7 +268,7 @@ export let header = function() {
 
     //---------------------open basket-------
     const btnBasket = document.querySelector('[data-btn-basket]');
-    const modalBasket = document.querySelector('[data-modal-basket]');
+
     const modalBasketContainer = document.querySelector('[data-modal-basket-container]');
     const closeBasketBtn = document.querySelector('[data-close-modal-basket]');
     const body = document.querySelector("#body-cont");
@@ -248,4 +316,57 @@ export let header = function() {
     document.addEventListener('click', () => {
         closeActive([comparisonPopUp]);
     })
+
+
+    const messageSection = document.querySelector("[data-message]");
+
+    if(messageSection !== null) {
+        const itemCart = messageSection.querySelector("[data-message-cart]")
+        const itemCompare = messageSection.querySelector("[data-message-compare]")
+        const itemFavorites = messageSection.querySelector("[data-message-favorites]")
+
+        const cart = document.querySelector("[data-modal-basket]");
+        const btnShowCart = messageSection.querySelector("[data-show-basket]");
+        const linkCompare = messageSection.querySelector("[data-show-comparison]");
+        const linkFavorites = messageSection.querySelector("[data-show-favorites]");
+
+        function hiddenMessage() {
+            itemCart.classList.remove("active")
+            itemCompare.classList.remove("active")
+            itemFavorites.classList.remove("active")
+        }
+
+        btnShowCart.addEventListener("click", () => {
+            cart.classList.add("active");
+
+            hiddenMessage()
+        })
+
+        linkCompare.addEventListener("click", () => {
+            hiddenMessage()
+        })
+
+        linkFavorites.addEventListener("click", () => {
+            hiddenMessage()
+        })
+    }
+
+    const modalInfo = document.querySelector("[data-modal-info]");
+
+    if(modalInfo !== null) {
+        const btnClose = modalInfo.querySelector("[data-close-modal-info]");
+        const container = modalInfo.querySelector("[data-modal-info-container]");
+
+        btnClose.addEventListener("click", () => {
+            modalInfo.classList.remove("active");
+        })
+
+        modalInfo.addEventListener("click", function (e) {
+            const click = e.composedPath().includes(container);
+            if (!click) {
+                modalInfo.classList.remove("active");
+                document.body.style.overflow = "auto";
+            }
+          });
+    }
 }

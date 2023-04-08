@@ -20,6 +20,21 @@ export let cardProduct = function () {
         "[data-characteristics-section]"
       );
 
+    const showCart = carProduct.querySelectorAll("[data-show-cart]");
+    const btnVideo = carProduct.querySelector("[data-btn-video-scroll]");
+    const sectionMulimedia = carProduct.querySelector('#card-product-multimedia');
+
+    showCart.forEach(el => {
+      el.addEventListener("click", () => {
+        modalBasket.classList.add('active')
+      })
+    })
+
+    btnVideo.addEventListener("click", () => {
+      if(sectionMulimedia !== null) {
+        sectionMulimedia.scrollIntoView()
+      }
+    })
     //------show all characteristics-------------------
     if (characteristicsSection != null) {
       const buttonShowMore = characteristicsSection.querySelector(
@@ -180,19 +195,24 @@ export let cardProduct = function () {
 
 
     if (sectionReviews !== null) {
-      const textArea = sectionReviews.querySelector(
-          "[data-text-area-feedback]"
-        ),
-        textAreaLabel = sectionReviews.querySelector(
-          "[data-text-area-feedback-label]"
-        );
+      const textArea = sectionReviews.querySelector("[data-text-area-feedback]"),
+        textAreaLabel = sectionReviews.querySelector("[data-text-area-feedback-label]");
+
+      const reviewLinks = carProduct.querySelectorAll("[data-reviews-link]");
+
+      reviewLinks.forEach(el => {
+        el.addEventListener("click", () => {
+          sectionReviews.scrollIntoView()
+        })
+      })
+
       sectionReviews.addEventListener("click", (e) => {
         const click = e.composedPath().includes(textArea);
-        console.log(click);
         if (!click) {
           textAreaLabel.classList.remove("active");
         }
       });
+
       textArea.addEventListener("click", () => {
         textAreaLabel.classList.add("active");
       });

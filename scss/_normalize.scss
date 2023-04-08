@@ -75,6 +75,21 @@ a {
     color: inherit;
     cursor: pointer;
     text-decoration: none;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    &:active {
+        color: white;
+        text-decoration: none;
+    }
+
+    &:focus {
+        color: white;
+        text-decoration: none;
+    }
 }
 
 a:not([class]) {
@@ -106,6 +121,10 @@ input,
 textarea {
     outline: none;
     transition: 0.2s;
+}
+
+.form input[type="email"]:focus, .form input[type="password"]:focus, .form input[type="tel"]:focus, .form input[type="text"]:focus, .form select:focus, .form textarea:focus {
+    border-color: inherit;
 }
 
 label {

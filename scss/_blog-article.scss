@@ -4,7 +4,7 @@
   @extend %size-page;
   @extend %padding-country;
 
-  @include __860 {
+  @include __960 {
     @include padding-mob;
   }
 
@@ -12,7 +12,7 @@
     margin-bottom: 40px;
   }
 
-  @include __860 {
+  @include __960 {
     margin-bottom: 100px;
   }
 }
@@ -26,7 +26,7 @@
 
   column-gap: 80px;
 
-  @include __860 {
+  @include __960 {
     display: flex;
   }
 
@@ -34,7 +34,7 @@
     margin-bottom: 8px;
     text-align: left;
 
-    @include __860 {
+    @include __960 {
       font-size: 20px;
       line-height: 32px;
     }
@@ -61,7 +61,7 @@
     margin-bottom: 20px;
     @include text($textAlign: left, $lineHeight: 24px);
 
-    @include __860 {
+    @include __960 {
       display: none;
     }
   }
@@ -87,7 +87,7 @@
       margin-top: 8px;
     }
 
-    @include __860 {
+    @include __960 {
       display: none;
     }
   }
@@ -99,17 +99,29 @@
   }
 
   &__last-news-wrp {
+    max-width: 420px;
+    width: 100%;
+
     row-gap: 24px;
 
     display: flex;
     flex-direction: column;
 
-    @include __860 {
+    @include __960 {
       display: none;
     }
   }
 
   &__last-news-wrp-title {
     text-align: left;
+  }
+}
+
+
+.link-text {
+  &:hover, 
+  &:active {
+    color: #C12125;
+    text-decoration: underline;
   }
 }

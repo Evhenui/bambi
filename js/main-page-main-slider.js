@@ -38,7 +38,7 @@ export let mainPageMainSlider = function() {
         window.addEventListener('resize', () => {
             widthScreenMain = window.innerWidth;
             if(widthScreenMain <= 460) {
-                menuHeader.style.setProperty('width', widthScreenMain + 'px');
+              /*   menuHeader.style.setProperty('width', widthScreenMain + 'px'); */
 
             }
             positionBtnSlider();

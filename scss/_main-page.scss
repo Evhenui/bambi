@@ -805,7 +805,6 @@
   }
   &__title-text-red-wrp {
     margin-bottom: 40px;
-    margin-left: -46px;
   }
   &__title-text-red {
     // max-width: 460px;
@@ -873,8 +872,9 @@
     }
   }
   &__btn-down {
-    padding-bottom: 28px;
-    @extend %centre-flex;
+    display: none;
+   /*  padding-bottom: 28px;
+    @extend %centre-flex; */
   }
   &__btn-down-icon {
     cursor: pointer;

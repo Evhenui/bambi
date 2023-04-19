@@ -142,7 +142,7 @@ label {
   --height-nav: 0;
 }
 
-.pop-up__btn, .warranty-servise__img-wrp, .pagination__btn-numbers-item-wrp, .pagination__btn-numbers-item, .pagination__btn-numbers-wrp, .pagination, .card-product-spare-parts__slider-navigation, .main-slider-card-prod__button-prev, .main-slider-card-prod__button-next, .card-product-gallery__slider-pagination, .card-product-reviews__title-wrapper, .card-product-all-info__button-buy, .modal-zoom__button-buy, .card-product-header-info .card-product-all-info__active-link.mobile-footer, .blog-main-news-main__text-wrp, .order-in-the-process__image-wrapper.number, .product-catalog-nav__list, .product-catalog-nav, .product-catalog-filters__filters-text-icon, .product-catalog-filters__container, .product-catalog-filters__selected, .product-catalog-filters__title-text-icon-wrp, .main-page-important-slider__btn-down, .main-page-important-slider__pagination-btn-wrp-item, .main-page-important-slider__pagination-btn-wrp, .main-page-range__circle-item-list, .main-page-range__circle-smoll-wrp, .main-page-product__carousel-top-nav-wrp, .main-page-product__title-text-wrp, .js-card-catalog-color.active > .card-prod-catalog__colors-item, .card-prod-catalog__colors-item-wrp, .card-prod-catalog__colors-wrp, .card-prod-catalog__rating-reviews-wrp, .card-prod-catalog__reviews-wrp, .card-prod-catalog__img, .main-slider .wrp-cont, .search-modal__total-text, .search-modal__text-wrp, .header__menu-work-time-timeline-mob, .header__right-item-phone, .header__right-item, .header__search-form-wrp, .header__btn-catalog, .header__btn-catalog-wrp, .icon-freim, .btn-red-white-background-red-text {
+.pop-up__btn, .warranty-servise__img-wrp, .pagination__btn-numbers-item-wrp, .pagination__btn-numbers-item, .pagination__btn-numbers-wrp, .pagination, .card-product-spare-parts__slider-navigation, .main-slider-card-prod__button-prev, .main-slider-card-prod__button-next, .card-product-gallery__slider-pagination, .card-product-reviews__title-wrapper, .card-product-all-info__button-buy, .modal-zoom__button-buy, .card-product-header-info .card-product-all-info__active-link.mobile-footer, .blog-main-news-main__text-wrp, .order-in-the-process__image-wrapper.number, .product-catalog-nav__list, .product-catalog-nav, .product-catalog-filters__filters-text-icon, .product-catalog-filters__container, .product-catalog-filters__selected, .product-catalog-filters__title-text-icon-wrp, .main-page-important-slider__pagination-btn-wrp-item, .main-page-important-slider__pagination-btn-wrp, .main-page-range__circle-item-list, .main-page-range__circle-smoll-wrp, .main-page-product__carousel-top-nav-wrp, .main-page-product__title-text-wrp, .js-card-catalog-color.active > .card-prod-catalog__colors-item, .card-prod-catalog__colors-item-wrp, .card-prod-catalog__colors-wrp, .card-prod-catalog__rating-reviews-wrp, .card-prod-catalog__reviews-wrp, .card-prod-catalog__img, .main-slider .wrp-cont, .search-modal__total-text, .search-modal__text-wrp, .header__menu-work-time-timeline-mob, .header__right-item-phone, .header__right-item, .header__search-form-wrp, .header__btn-catalog, .header__btn-catalog-wrp, .icon-freim, .btn-red-white-background-red-text {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3486,7 +3486,6 @@ html.notOverY {
 }
 .main-page-important-slider__title-text-red-wrp {
   margin-bottom: 40px;
-  margin-left: -46px;
 }
 .main-page-important-slider__title-text-red {
   padding-right: 40px;
@@ -3545,7 +3544,9 @@ html.notOverY {
   opacity: 1;
 }
 .main-page-important-slider__btn-down {
-  padding-bottom: 28px;
+  display: none;
+  /*  padding-bottom: 28px;
+   @extend %centre-flex; */
 }
 .main-page-important-slider__btn-down-icon {
   cursor: pointer;
@@ -4005,6 +4006,9 @@ html.notOverY {
   /* max-width: 290px; */
   display: none;
   width: 100%;
+  position: sticky;
+  top: 154px;
+  background-color: #f8f7f7;
   padding-bottom: 12px;
   gap: 12px;
   display: flex;
@@ -7730,7 +7734,7 @@ body.lock {
   margin: 0;
 }
 .card-product-header-info.active .card-product-header-info__main-item-title {
-  font-size: 32px;
+  font-size: 40px;
 }
 @media (max-width: 1200px) {
   .card-product-header-info.active .card-product-navigation__menu {
@@ -12189,8 +12193,11 @@ body.lock {
   overflow-x: hidden;
 }
 .warranty-servise__text-wrp::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 4px;
+}
+.warranty-servise__text-wrp::-webkit-scrollbar-thumb {
+  background: #cecaca;
+  border-radius: 4px;
 }
 @media (max-width: 860px) {
   .warranty-servise__text-wrp {

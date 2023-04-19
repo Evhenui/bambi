@@ -2,7 +2,7 @@
 
 export let importantSlider = function() {
   const importantWrp = document.querySelector('[data-important-wrp]');
-  if(importantWrp != null) {
+  if(importantWrp !== null) {
 
     const importantTextArr = importantWrp.querySelectorAll('[data-important-text]');
     const importantBtntArr = importantWrp.querySelectorAll('[data-important-btn]');
@@ -19,6 +19,21 @@ export let importantSlider = function() {
     let difference = 0;
     let counter = 0;
     var listenedElements = [];
+    let interval = -1;
+
+    clearInterval(interval)
+
+    interval = setInterval(() => {
+      if(counter < importantImgArr.length - 2 ) {
+        counter++
+        movingSlider()
+        startDrawing()
+      } else {
+        counter = 0
+        movingSlider()
+        startDrawing()
+      }
+    }, 5000);
 
     function actualTransition() {
       window.getComputedStyle(importantImgWrp).getPropertyValue('--counter-import-slider');
@@ -134,6 +149,7 @@ export let importantSlider = function() {
       moving = true;
       drawingSlider.style.cursor = "grabbing";
       startPosition = event.pageX;
+      clearInterval(interval)
     })
 
     drawingSlider.addEventListener('mousemove', event => {
@@ -156,6 +172,7 @@ export let importantSlider = function() {
       activeTouches = true;
       positionLeft = event.touches[0].clientX;
       startPosition = event.touches[0].clientX;
+      clearInterval(interval)
     })
 
     drawingSlider.addEventListener('touchmove', event => {

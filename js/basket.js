@@ -495,18 +495,30 @@ export let basket = function () {
         const selectRegion = basket.querySelector("[data-select-input-region]");
         const departDrop = basket.querySelector("[data-wrp-selected-department-number]");
         const inputWrpDelivery = basket.querySelector('[data-home-delivery]');  
+        const inputUkrPost = basket.querySelector('[data-home-ukrpost]');
         const inputDelivery = basket.querySelector("[data-input-delivery]");
         const checkboxes = basket.querySelectorAll(".basket__checkbox");
 
         let switchState = "department";
 
+        departDrop.classList.add("active")
+
         function checkDelivery() {
-            if(switchState === "department") {
-                departDrop.classList.remove("hidden")
-                inputWrpDelivery.classList.remove("active")
-            } else if(switchState === "delivery") {
-                departDrop.classList.add("hidden")
-                inputWrpDelivery.classList.add("active")
+            if (switchState === "department") {
+                departDrop.classList.replace("hidden", "active");
+            
+                inputUkrPost.classList.replace('active', 'hidden');
+                inputWrpDelivery.classList.replace('active', 'hidden');
+            } else if (switchState === "delivery") {
+                inputWrpDelivery.classList.replace("hidden", "active");
+            
+                departDrop.classList.replace("active", "hidden");
+                inputUkrPost.classList.replace('active', 'hidden');
+            } else if (switchState === "ukrPost") {
+                inputUkrPost.classList.replace('hidden', 'active');
+            
+                departDrop.classList.replace("active", "hidden");
+                inputWrpDelivery.classList.replace("active", "hidden");
             }
         }
 
@@ -520,6 +532,12 @@ export let basket = function () {
 
         checkboxes[1].addEventListener("change", ()=> {
             switchState = "delivery"
+
+            checkDelivery()
+        })
+
+        checkboxes[2].addEventListener("change", ()=> {
+            switchState = "ukrPost"
 
             checkDelivery()
         })

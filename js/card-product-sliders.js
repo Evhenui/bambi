@@ -272,13 +272,19 @@ export let cardProductSliders = function () {
       })
 
       slidesPreview.forEach((el, index) => {
-        el.addEventListener('click', () => {
+        el.addEventListener('click', (e) => {
           indexSlide = index;
           counter = index;
           changeSliderModal()
 
           delActive(slidesPreview)
           slidesPreview[index].classList.add('active')
+
+          if(e.target.id) {
+            movingBtn.classList.remove('ok')
+          }else {
+            movingBtn.classList.add('ok')
+          }
 
           pagination.scrollTop = counter * slidesPreview[0].offsetWidth;
 

@@ -700,7 +700,7 @@
     transition: 0.3s ease-out;
     z-index: 111;
     &.active {
-      height: 120px;
+      height: 160px; 
       transition: 0.3s ease-in;
     }
     & .lunge__item {
@@ -981,4 +981,3 @@
       background-color: black;
 		}
 }
-

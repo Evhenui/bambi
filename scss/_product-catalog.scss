@@ -27,6 +27,71 @@
   }
 }
 
+.text-style-description {
+  counter-reset: listCounter;
+  color: $color-black;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include text(
+      $size: 20px,
+      $textAlign: left,
+      $color: $color-black,
+      $fontWeight: 600,
+      $lineHeight: 32px
+    );
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  ol {
+    padding-left: 8px;
+
+    li {
+      &::before {
+        content: counter(listCounter) ". ";
+        counter-increment: listCounter;
+        color: $color-red;
+        font-weight: 700;
+      }
+    }
+  }
+
+  ul {
+    padding-left: 28px;
+
+    li {
+      position: relative;
+
+      &::before {
+        content: "\25C6";
+        color: $color-red;
+
+        position: absolute;
+        left: -16px;
+      }
+    }
+  }
+
+  a {
+    color: $color-red;
+    text-decoration: underline;
+
+    transition: 0.3s;
+
+    &:hover {
+      color: $color-red-80;
+      transition: 0.3s;
+    }
+  }
+}
+
 .product-catalog-filters {
   max-width: 324px;
   width: 100%;
@@ -84,7 +149,7 @@
         top: 180px;
 
         margin-left: 0;
-        
+
         overflow-y: auto;
 
         &::-webkit-scrollbar {
@@ -105,7 +170,7 @@
         @include __860 {
           width: 100% !important;
           height: 100%;
-          
+
           position: static;
         }
       }
@@ -278,9 +343,8 @@
   }
   &__selected-wrp {
     /* max-width: 290px; */
-    display: none;
     width: 100%;
-
+    display: flex;
     position: sticky;
     top: 154px;
     background-color: #f8f7f7;
@@ -288,21 +352,20 @@
     padding-bottom: 12px;
 
     gap: 12px;
-
-    display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     z-index: 1111;
     transition: 0.3s ease-in;
 
     @include __860 {
+      display: none;
       max-width: 100%;
     }
 
     &.active {
 /*       max-width: initial;
       width: 200%;
-      
+
       position: fixed;
       top: 146px;
       padding-bottom: 16px;

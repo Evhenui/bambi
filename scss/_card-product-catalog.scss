@@ -4,7 +4,7 @@
   --row-gap: 16px;
   --gap: 16px;
 
- /*  transition: all 0.1s ease-in-out; */
+  /*  transition: all 0.1s ease-in-out; */
   background-color: $color-white;
 
   @include set-item-count-in-row(4);
@@ -73,8 +73,8 @@
       max-width: 295px;
       width: 100%;
     }
- 
-/*     @include __480 {
+
+    /*     @include __480 {
       height: 276px;
     } */
   }
@@ -205,20 +205,21 @@
     height: 32px;
     position: relative;
     @extend %centre-flex;
-    @include __480 {
-      &:first-child {
-        display: none;
-      }
-      &:nth-last-child(-n + 2) {
-        display: flex;
-      }
-      &:nth-child(2n + 2) {
-        display: none;
-      }
-      &:nth-child(2n + 4) {
-        display: none;
-      }
-    }
+    // @include __480 {
+    //   &:first-child {
+    //     display: none;
+    //   }
+    //   &:nth-last-child(-n + 2) {
+    //     display: flex;
+    //   }
+    //   &:nth-child(2n + 2) {
+    //     display: none;
+    //   }
+    //   &:nth-child(2n + 4) {
+    //     display: none;
+    //   }
+    
+    // }
     &:hover .js-card-catalog-color-item {
       width: 20px;
       height: 20px;
@@ -259,7 +260,7 @@
     }
   }
   &__buy-img {
-/*     padding-left: 11px;
+    /*     padding-left: 11px;
     margin-right: 12px; */
   }
   &__buy-text {
@@ -470,7 +471,6 @@
 
 .card-prod-catalog__colors-item-wrp.enabled .card-prod-catalog__enabled {
   display: block;
-
 }
 .card-prod-catalog__colors-item-wrp .card-prod-catalog__enabled {
   display: none;

@@ -494,6 +494,8 @@ export let inputValidate = function() {
       const labelTextarea = homePage.querySelector("[data-home-textarea-label]");
       const inputTextarea = homePage.querySelector("[data-home-textarea]");
 
+      const txtTelError = homePage.querySelector('#error_telephone');
+
       const btn = homePage.querySelector("[data-btn-send]");
 
       var maskOptions = { mask: '+{38} (000)-000-00-00' };
@@ -531,9 +533,11 @@ export let inputValidate = function() {
         inputTel.placeholder = '';
 
         if(!validator.isMobilePhone(inputTel.value.replace(/[^0-9]/g, '').substring(2), ['uk-UA'])) {
-          wrpTel.classList.add("invalid")
+          wrpTel.classList.add("invalid");
+          txtTelError.classList.add('show')
         } else {
           wrpTel.classList.remove("invalid")
+          txtTelError.classList.remove('show')
         }
       })
 

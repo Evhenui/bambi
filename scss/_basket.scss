@@ -197,14 +197,30 @@
 
     &__wrapper-input {
         margin: 0;
-        flex: 1 1 300px;
+        max-width: 300px;
+        width: 100%;
         position: relative;
 
         &.delivery {
+            max-width: 410px;
+            width: 100%;
             display: none;
+
+            @include __640 {
+                max-width: 300px;
+            }
 
             &.active {
                 display: block;
+            }
+        }
+
+        &.ukrpost {
+            max-width: 410px;
+            width: 100%;
+
+            @include __640 {
+                max-width: 300px;
             }
         }
 
@@ -224,7 +240,7 @@
         font-weight: 400 !important;
         line-height: 24px !important;
         padding: 8.9px 20px;
-        max-width: 300px;
+        max-width: 410px;
         width: 100%;
 
         &:hover {
@@ -235,7 +251,6 @@
           }
 
           @media (max-width: 960px) {
-            max-width: 300px;
             height: 44px;
           }
 
@@ -279,8 +294,10 @@
 
     &__inputs-select-post {
         display: flex;
-        column-gap: 60px;
+        column-gap: 10px;
         margin-bottom: 52px;
+
+        align-items: baseline;
         overflow: hidden;
         @media (max-width: 1174px) {
             flex-direction: column;
@@ -312,6 +329,14 @@
     }
     &__checkbox-label,  &__checkbox-label-pay{
         @include text($size: 14px, $color: $color-gray-60, $textAlign: left, $fontWeight: 400, $lineHeight: 24px);
+    }
+
+    &__checkbox-label {
+        margin: 0;
+        @include __1190 {
+            height: 25px;
+        }
+
     }
 
 
@@ -373,9 +398,26 @@
         flex-wrap: wrap;
         row-gap: 32px;
         gap: 32px 24px;
+
         @include __960 {
             flex-direction: column;
             align-items: flex-start;
+        }
+
+        .selected {
+            .selected__select {
+                width: 410px;
+
+                @include __640 {
+                    width: 300px;
+                }
+            }
+
+            .selected__option-text {
+                @include __640 {
+                    font-size: 11px;
+                }
+            }
         }
     }
 
@@ -410,28 +452,34 @@
         width: 300px;
         display: inline-block;
         background-color: $color-black;
-        color: $color-white;
+        
         opacity: 0;
         visibility: hidden;
         transition: all .3s ease-in-out;
         padding: 8px 12px;
-        top: -120px;
-        left: -138px;
+        bottom: 150%;
+        right: 50%;
+
+        transform: translateX(50%);
+
+        @include __640 {
+            width: 150px;
+        }
     }
 
     &__explanation-hidden-text {
-        position: relative;
         @include text($size: 12px, $color: $color-white, $textAlign: left, $fontWeight: 400, $lineHeight: 20px);
         &::after {
             content: '';
             width: 12px;
-            height: 4px;
-            background-repeat: no-repeat;
-            background-image: url('/img/arrow-down.png');
+            height: 12px;
             position: absolute;
-            bottom: -17px;
+            bottom: -7px;
             left: 50%;
-            transform: translate(-50%, -50%);
+
+            background-color: $color-black;
+            transform: translate(-50%, -50%) rotateZ(45deg);
+            box-shadow: 0px 4px 22px -8px rgba(0, 0, 0, 0.15);
         }
     }
 
@@ -867,7 +915,7 @@
     }
 
     &__option-item {
-        min-height: 40px;
+        min-height: 60px;
 
         display: flex;
         justify-content: space-between;
